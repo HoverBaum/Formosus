@@ -1,4 +1,5 @@
-hourInterval = null;
+hourInterval = null;	//Intervall for hourly tasks.
+images = null;			//Array of currently used images.
 
 //-------------------------------------------------------------
 /*
@@ -7,6 +8,7 @@ hourInterval = null;
 //-------------------------------------------------------------
 
 $(document).ready(function() {
+	images = general;
     updateGreeting();
     hourInterval = setInterval(updateGreeting, 60000)
     registerHooks();
@@ -14,14 +16,6 @@ $(document).ready(function() {
 
 function registerHooks() {
     $("#search-js").keypress(search);
-	/*$(".extendable").each(function() {
-		$(this).mouseenter(function() {
-			console.log("enter");
-		});
-		$(this).mouseleave(function() {
-			console.log("leave");
-		});
-	});*/
 }
 
 //-----------------------------------------------------------
@@ -36,6 +30,7 @@ function updateGreeting() {
     var h = date.getHours();
     var greet = generateGreeting(h);
     $("#greeting-js").text(greet);
+	updateBackground();
 }
 
 function generateGreeting(h) {
@@ -86,6 +81,63 @@ function search(e) {
 }
 
 //---------------------------------------------------------------------
-//  Calender
-//  https://www.google.com/calendar/feeds/gemret%40gmail.com/public/full-noattendees
+/*
+	Images
+	
+	Multiple arrays containing images.
+	Each image is an object and build like:
+		{
+			src: link to image
+			desc: a short (up to 4 words) description of the image
+			credit: who deserves credit
+			link: assuming CC, need to link to somewhere (like flickr)
+		}
+*/
 //---------------------------------------------------------------------
+
+var general = [
+	{
+		src: 'https://farm3.staticflickr.com/2340/2040615896_498a115e61_o.jpg',
+		desc: 'Forest on fire',
+		credit: 'Wolfgang Staudt',
+		link: 'https://www.flickr.com/photos/53074617@N00/2040615896/'
+	},
+	{
+		src: 'https://farm3.staticflickr.com/2946/15349166041_e2012546ec_k.jpg',
+		desc: 'Autum forest',
+		credit: 'Olli',
+		link: 'https://www.flickr.com/photos/84814657@N04/15349166041/'
+	},
+	{
+		src: 'https://farm8.staticflickr.com/7153/6830946505_494e7aafb2_o.jpg',
+		desc: 'Ayr, Scotland',
+		credit: 'Graeme Law',
+		link: 'https://www.flickr.com/photos/14534290@N04/6830946505/'
+	},
+	{
+		src: 'https://farm9.staticflickr.com/8233/8369468069_2f7a342bcf_k.jpg',
+		desc: 'Bixad, Romania',
+		credit: 'János Csongor Kerekes',
+		link: 'https://www.flickr.com/photos/30420396@N03/8369468069/'
+	},
+	{
+		src: 'https://farm4.staticflickr.com/3187/2904369145_daf89c90f2_o.jpg',
+		desc: 'Lake in Colorado',
+		credit: 'ellenm1',
+		link: 'https://www.flickr.com/photos/47051377@N00/2904369145/'
+	},
+	{
+		src: 'https://farm4.staticflickr.com/3891/14392592291_d8f102a7ae_k.jpg',
+		desc: 'Lake in Idaho',
+		credit: 'megaguilarphotography',
+		link: 'https://www.flickr.com/photos/megaguilarphotography/14392592291/in/photostream/'
+	}
+]
+
+/*
+	Checks the current background image and updates it if need be.
+*/
+function updateBackground() {
+	var index = Math.ceil(Math.random() * images.length) - 1;
+	$('body').css('background-image', 'url('+ images[index].src +')');
+}
