@@ -1,5 +1,6 @@
 hourInterval = null;	//Intervall for hourly tasks.
 images = null;			//Array of currently used images.
+name = '';				//Name of the user.
 
 //-------------------------------------------------------------
 /*
@@ -8,14 +9,42 @@ images = null;			//Array of currently used images.
 //-------------------------------------------------------------
 
 $(document).ready(function() {
+	initData();
+	setup();
 	images = general;
-    updateGreeting();
-    hourInterval = setInterval(updateGreeting, 60000)
+    hourlyTasks();
+    hourInterval = setInterval(hourlyTasks, 3600000)
     registerHooks();
 });
 
 function registerHooks() {
     $("#search-js").keypress(search);
+}
+
+/*
+	Sets up stuff, like name.
+*/
+function setup() {
+	if(name !== undefined && name !== null && name !== '') {
+		$('#name-js').html(name);
+	}
+}
+
+
+/*
+	Runs everything that need to run every hour.
+*/
+function hourlyTasks() {
+	updateGreeting();
+	updateBackground();
+}
+
+/*
+	Initializes variables that may be stored locally.
+*/
+function initData() {
+	var lname = localStorage.getItem('name');
+	if(lname !== undefined && lname !== null) name = lname;
 }
 
 //-----------------------------------------------------------
@@ -30,7 +59,6 @@ function updateGreeting() {
     var h = date.getHours();
     var greet = generateGreeting(h);
     $("#greeting-js").text(greet);
-	updateBackground();
 }
 
 function generateGreeting(h) {

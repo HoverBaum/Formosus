@@ -39,8 +39,7 @@ h1 {
 }
 
 #search-js {
-    height: 25px;
-    width: 300px;
+    width: 350px;
     font-size: 18px;
     padding: 3px;
     border-radius: 2px;
@@ -48,7 +47,7 @@ h1 {
     display: block;
 	background: none;
     border: none;
-	border-bottom: 4px solid white;
+	border-bottom: 2px solid white;
     color: white;
     cursor: pointer;
 	opacity: 0.7;
