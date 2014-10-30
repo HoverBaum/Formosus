@@ -1,7 +1,10 @@
 hourInterval = null;	//Intervall for hourly tasks.
 images = null;			//Array of currently used images.
 name = '';				//Name of the user.
+imageIndex = null;			//Index of currently used image.
+lastInc = null;			//Last day the imageIndex was incremented.
 
+86400000
 //-------------------------------------------------------------
 /*
     Initialisations
@@ -9,9 +12,9 @@ name = '';				//Name of the user.
 //-------------------------------------------------------------
 
 $(document).ready(function() {
+	images = general;
 	initData();
 	setup();
-	images = general;
     hourlyTasks();
     hourInterval = setInterval(hourlyTasks, 3600000)
     registerHooks();
@@ -25,11 +28,35 @@ function registerHooks() {
 	Sets up stuff, like name.
 */
 function setup() {
+	//Display the users name.
 	if(name !== undefined && name !== null && name !== '') {
 		$('#name-js').html(name);
 	}
+	//Check which background image should be used.
+	displayNextImage();
 }
 
+/*
+	Displays the next image according to the index.
+*/
+function displayNextImage() {
+	var today = new Date().getDay();
+	if(lastInc !== null) {
+		//Check for index here, so we can set it below if need be.
+		if(lastInc == today && imageIndex !== null) {
+			return;
+		}
+	}
+	if(imageIndex === null) {
+		imageIndex = Math.ceil(Math.random() * images.length) - 1;
+	}
+	imageIndex++;
+	if(imageIndex >= images.length) imageIndex = 0;
+	updateBackground();
+	lastInc = today;
+	localStorage.setItem('imageIndex', imageIndex);
+	localStorage.setItem('lastInc', lastInc);
+}
 
 /*
 	Runs everything that need to run every hour.
@@ -45,6 +72,10 @@ function hourlyTasks() {
 function initData() {
 	var lname = localStorage.getItem('name');
 	if(lname !== undefined && lname !== null) name = lname;
+	var limageIndex = localStorage.getItem('imageIndex');
+	if(limageIndex !== undefined && limageIndex !== null) imageIndex = limageIndex;
+	var llastInc = localStorage.getItem('lastInc');
+	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
 }
 
 //-----------------------------------------------------------
@@ -159,6 +190,18 @@ var general = [
 		desc: 'Lake in Idaho',
 		credit: 'megaguilarphotography',
 		link: 'https://www.flickr.com/photos/megaguilarphotography/14392592291/in/photostream/'
+	},
+	{
+		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/sunset1.png',
+		desc: 'Sunset',
+		credit: 'Jace Flournoy',
+		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/sunset1.png'
+	},
+	{
+		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png',
+		desc: 'Grand Tetons',
+		credit: 'Jace Flournoy',
+		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png'
 	}
 ]
 
@@ -166,6 +209,5 @@ var general = [
 	Checks the current background image and updates it if need be.
 */
 function updateBackground() {
-	var index = Math.ceil(Math.random() * images.length) - 1;
-	$('body').css('background-image', 'url('+ images[index].src +')');
+	$('body').css('background-image', 'url('+ images[imageIndex].src +')');
 }
