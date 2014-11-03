@@ -15,6 +15,7 @@ $(document).ready(function() {
 	images = general;
 	initData();
 	setup();
+	resizeName();
     hourlyTasks();
     hourInterval = setInterval(hourlyTasks, 3600000)
     registerHooks();
@@ -22,6 +23,7 @@ $(document).ready(function() {
 
 function registerHooks() {
     $("#search-js").keypress(search);
+	$('#name-input').keyup(resizeName);
 }
 
 /*
@@ -30,7 +32,7 @@ function registerHooks() {
 function setup() {
 	//Display the users name.
 	if(name !== undefined && name !== null && name !== '') {
-		$('#name-js').html(name);
+		document.getElementById('name-input').value = name;
 	}
 	//Check which background image should be used.
 	displayNextImage();
@@ -103,7 +105,7 @@ function generateGreeting(h) {
 
 //--------------------------------------------------------------
 /*
-    Searching
+    Hooked to inputs
 */  
 //-----------------------------------------------------------------
     
@@ -137,6 +139,15 @@ function search(e) {
         form.method="GET";
         form.submit();
     }
+}
+
+function resizeName(e) {
+	var $input = $('#name-input');
+	var $span = $('#name-js');
+	var val = $input.val();
+	$span.text(val);
+	$input.css('width', $span.css('width'));
+	localStorage.setItem('name', val);
 }
 
 //---------------------------------------------------------------------

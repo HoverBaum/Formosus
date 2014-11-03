@@ -58,3 +58,24 @@ h1 {
     outline: none;
 	opacity: 1;
 }
+
+#name-input {
+	border: none;
+	background: none;
+	outline: none;
+	color: #fff;
+	opacity: 0.9;
+    font-weight: 400;
+    font-size: 1em;
+    text-align: center;
+	margin-bottom: 2%;
+	text-align: left;
+	min-width: 1em;
+	cursor: pointer;
+	box-sizing: border-box;
+	height: 1.1em;
+}
+
+#name-input:focus {
+	border-bottom: 3px solid white;
+}
