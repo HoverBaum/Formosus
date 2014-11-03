@@ -4,7 +4,7 @@ name = '';				//Name of the user.
 imageIndex = null;			//Index of currently used image.
 lastInc = null;			//Last day the imageIndex was incremented.
 
-86400000
+
 //-------------------------------------------------------------
 /*
     Initialisations
@@ -203,12 +203,6 @@ var general = [
 		link: 'https://www.flickr.com/photos/megaguilarphotography/14392592291/in/photostream/'
 	},
 	{
-		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/sunset1.png',
-		desc: 'Sunset',
-		credit: 'Jace Flournoy',
-		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/sunset1.png'
-	},
-	{
 		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png',
 		desc: 'Grand Tetons',
 		credit: 'Jace Flournoy',
@@ -221,4 +215,13 @@ var general = [
 */
 function updateBackground() {
 	$('body').css('background-image', 'url('+ images[imageIndex].src +')');
+}
+
+function testNextImage() {
+	imageIndex++;
+	if(imageIndex >= images.length) imageIndex = 0;
+	updateBackground();
+	lastInc = today;
+	localStorage.setItem('imageIndex', imageIndex);
+	localStorage.setItem('lastInc', lastInc);
 }
