@@ -2,6 +2,7 @@ hourInterval = null;	//Intervall for hourly tasks.
 images = null;			//Array of currently used images.
 name = '';				//Name of the user.
 
+
 //-------------------------------------------------------------
 /*
     Initialisations
@@ -159,6 +160,12 @@ var general = [
 		desc: 'Lake in Idaho',
 		credit: 'megaguilarphotography',
 		link: 'https://www.flickr.com/photos/megaguilarphotography/14392592291/in/photostream/'
+	},
+	{
+		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png',
+		desc: 'Grand Tetons',
+		credit: 'Jace Flournoy',
+		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png'
 	}
 ]
 
@@ -166,6 +173,14 @@ var general = [
 	Checks the current background image and updates it if need be.
 */
 function updateBackground() {
-	var index = Math.ceil(Math.random() * images.length) - 1;
-	$('body').css('background-image', 'url('+ images[index].src +')');
+	$('body').css('background-image', 'url('+ images[imageIndex].src +')');
+}
+
+function testNextImage() {
+	imageIndex++;
+	if(imageIndex >= images.length) imageIndex = 0;
+	updateBackground();
+	lastInc = today;
+	localStorage.setItem('imageIndex', imageIndex);
+	localStorage.setItem('lastInc', lastInc);
 }
