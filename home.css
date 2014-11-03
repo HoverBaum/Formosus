@@ -80,3 +80,11 @@ h1 {
 #name-input:focus {
 	border-bottom: 3px solid white;
 }
+
+#name-input::selection {
+  background: #fff; /* WebKit/Blink Browsers */
+}
+
+#name-input::-moz-selection {
+  background: #fff; /* Gecko Browsers */
+}
