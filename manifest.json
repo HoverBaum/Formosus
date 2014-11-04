@@ -1,0 +1,8 @@
+{
+  "manifest_version": 2,
+
+  "name": "CleanTab",
+  "description": 'Replaces the "New Tab" tab.',
+  "version": "0.8",
+
+}
