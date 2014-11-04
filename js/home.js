@@ -17,7 +17,9 @@ $(document).ready(function() {
 	setup();
 	resizeName();
     hourlyTasks();
-    hourInterval = setInterval(hourlyTasks, 3600000)
+	minutlyTasks();
+    hourInterval = setInterval(hourlyTasks, 3600000);
+	minuteInterval = setInterval(minutlyTasks, 60000);
     registerHooks();
 });
 
@@ -61,14 +63,6 @@ function displayNextImage() {
 }
 
 /*
-	Runs everything that need to run every hour.
-*/
-function hourlyTasks() {
-	updateGreeting();
-	updateBackground();
-}
-
-/*
 	Initializes variables that may be stored locally.
 */
 function initData() {
@@ -78,6 +72,34 @@ function initData() {
 	if(limageIndex !== undefined && limageIndex !== null) imageIndex = limageIndex;
 	var llastInc = localStorage.getItem('lastInc');
 	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
+}
+
+/*
+===================================================================================0
+	Periodic starting of tasks.
+
+*/
+
+/*
+	Runs everything that need to run every hour.
+*/
+function hourlyTasks() {
+	updateGreeting();
+	updateBackground();
+}
+
+function minutlyTasks() {
+	updateTime();
+}
+
+/*
+	Update the displayed time.
+*/
+
+function updateTime() {
+	var now = new Date();
+	var time = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+	$('#time-js').html(time);
 }
 
 //-----------------------------------------------------------

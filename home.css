@@ -21,13 +21,13 @@ body {
 }
 
 #wrapper {
-	padding-top: 20%;
+	padding-top: 15%;
 	
 }
 
 h1 {
     color: #fff;
-	opacity: 0.9;
+	opacity: 0.85;
     font-weight: 400;
     font-size: 4em;
     text-align: center;
@@ -87,4 +87,8 @@ h1 {
 
 #name-input::-moz-selection {
   background: #fff; /* Gecko Browsers */
+}
+
+#time-js {
+	font-size: 3em;
 }
