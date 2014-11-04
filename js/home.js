@@ -190,12 +190,6 @@ function resizeName(e) {
 
 var general = [
 	{
-		src: 'https://farm3.staticflickr.com/2340/2040615896_498a115e61_o.jpg',
-		desc: 'Forest on fire',
-		credit: 'Wolfgang Staudt',
-		link: 'https://www.flickr.com/photos/53074617@N00/2040615896/'
-	},
-	{
 		src: 'https://farm3.staticflickr.com/2946/15349166041_e2012546ec_k.jpg',
 		desc: 'Autum forest',
 		credit: 'Olli',
