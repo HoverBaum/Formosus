@@ -5,6 +5,7 @@ imageIndex = null;			//Index of currently used image.
 lastInc = null;			//Last day the imageIndex was incremented.
 
 
+
 //-------------------------------------------------------------
 /*
     Initialisations
