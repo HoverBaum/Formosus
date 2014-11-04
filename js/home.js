@@ -1,6 +1,9 @@
 hourInterval = null;	//Intervall for hourly tasks.
 images = null;			//Array of currently used images.
 name = '';				//Name of the user.
+imageIndex = null;			//Index of currently used image.
+lastInc = null;			//Last day the imageIndex was incremented.
+
 
 
 //-------------------------------------------------------------
@@ -10,27 +13,73 @@ name = '';				//Name of the user.
 //-------------------------------------------------------------
 
 $(document).ready(function() {
+	images = general;
 	initData();
 	setup();
-	images = general;
+	resizeName();
     hourlyTasks();
-    hourInterval = setInterval(hourlyTasks, 3600000)
+	minutlyTasks();
+    hourInterval = setInterval(hourlyTasks, 3600000);
+	minuteInterval = setInterval(minutlyTasks, 60000);
     registerHooks();
 });
 
 function registerHooks() {
     $("#search-js").keypress(search);
+	$('#name-input').keyup(resizeName);
 }
 
 /*
 	Sets up stuff, like name.
 */
 function setup() {
+	//Display the users name.
 	if(name !== undefined && name !== null && name !== '') {
-		$('#name-js').html(name);
+		document.getElementById('name-input').value = name;
 	}
+	//Check which background image should be used.
+	displayNextImage();
 }
 
+/*
+	Displays the next image according to the index.
+*/
+function displayNextImage() {
+	var today = new Date().getDay();
+	if(lastInc !== null) {
+		//Check for index here, so we can set it below if need be.
+		if(lastInc == today && imageIndex !== null) {
+			return;
+		}
+	}
+	if(imageIndex === null) {
+		imageIndex = Math.ceil(Math.random() * images.length) - 1;
+	}
+	imageIndex++;
+	if(imageIndex >= images.length) imageIndex = 0;
+	updateBackground();
+	lastInc = today;
+	localStorage.setItem('imageIndex', imageIndex);
+	localStorage.setItem('lastInc', lastInc);
+}
+
+/*
+	Initializes variables that may be stored locally.
+*/
+function initData() {
+	var lname = localStorage.getItem('name');
+	if(lname !== undefined && lname !== null) name = lname;
+	var limageIndex = localStorage.getItem('imageIndex');
+	if(limageIndex !== undefined && limageIndex !== null) imageIndex = limageIndex;
+	var llastInc = localStorage.getItem('lastInc');
+	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
+}
+
+/*
+===================================================================================0
+	Periodic starting of tasks.
+
+*/
 
 /*
 	Runs everything that need to run every hour.
@@ -40,12 +89,18 @@ function hourlyTasks() {
 	updateBackground();
 }
 
+function minutlyTasks() {
+	updateTime();
+}
+
 /*
-	Initializes variables that may be stored locally.
+	Update the displayed time.
 */
-function initData() {
-	var lname = localStorage.getItem('name');
-	if(lname !== undefined && lname !== null) name = lname;
+
+function updateTime() {
+	var now = new Date();
+	var time = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+	$('#time-js').html(time);
 }
 
 //-----------------------------------------------------------
@@ -73,7 +128,7 @@ function generateGreeting(h) {
 
 //--------------------------------------------------------------
 /*
-    Searching
+    Hooked to inputs
 */  
 //-----------------------------------------------------------------
     
@@ -107,6 +162,15 @@ function search(e) {
         form.method="GET";
         form.submit();
     }
+}
+
+function resizeName(e) {
+	var $input = $('#name-input');
+	var $span = $('#name-js');
+	var val = $input.val();
+	$span.text(val);
+	$input.css('width', $span.css('width'));
+	localStorage.setItem('name', val);
 }
 
 //---------------------------------------------------------------------
