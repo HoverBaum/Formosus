@@ -1,8 +1,12 @@
 {
-  "manifest_version": 2,
+ 	"manifest_version": 2,
 
-  "name": "CleanTab",
-  "description": 'Replaces the "New Tab" tab.',
-  "version": "0.8",
+	"name": "CleanTab",
+  	"description": "Replaces the 'New Tab' tab.",
+  	"version": "0.8",
 
+	"chrome_url_overrides" : {
+    	"newtab": "index.html"
+  	}
+	
 }
