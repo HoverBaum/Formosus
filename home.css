@@ -93,3 +93,29 @@ h1 {
 	font-size: 3em;
 	opacity: 0.8;
 }
+
+#credits {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	color: white;
+	opacity: 0.8;
+	cursor: pointer;
+	transition: all 0.3 ease-out;
+	text-decoration: none;
+}
+
+#credits:hover {
+	opacity: 1;
+}
+
+#credits:hover #credit-author {
+	height: 1em;
+}
+
+#credit-author {
+	height: 0px;
+	display: block;
+	overflow: hidden;
+	transition: all 0.3s ease-out;
+}

@@ -224,6 +224,12 @@ var general = [
 		desc: 'Grand Tetons',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png'
+	},
+	{
+		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png',
+		desc: 'Grand Tetons',
+		credit: 'Jace Flournoy',
+		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png'
 	}
 ]
 
@@ -232,6 +238,10 @@ var general = [
 */
 function updateBackground() {
 	$('body').css('background-image', 'url('+ images[imageIndex].src +')');
+	//Now update the credit.
+	$('#credit-title').html(images[imageIndex].desc);
+	$('#credit-author').html(images[imageIndex].credit);
+	$('#credits').attr('href', images[imageIndex].link);
 }
 
 function testNextImage() {
