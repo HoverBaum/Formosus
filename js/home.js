@@ -20,7 +20,7 @@ $(document).ready(function() {
     hourlyTasks();
 	minutlyTasks();
     hourInterval = setInterval(hourlyTasks, 3600000);
-	minuteInterval = setInterval(minutlyTasks, 60000);
+	minuteInterval = setInterval(minutlyTasks, 1000);
     registerHooks();
 });
 
