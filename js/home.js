@@ -3,8 +3,8 @@ images = null;			//Array of currently used images.
 name = '';				//Name of the user.
 imageIndex = null;			//Index of currently used image.
 lastInc = null;			//Last day the imageIndex was incremented.
-
-
+lang = 'german';		//Which language to use.
+var greetings = [];		//The different greetings.
 
 //-------------------------------------------------------------
 /*
@@ -39,6 +39,8 @@ function setup() {
 	}
 	//Check which background image should be used.
 	displayNextImage();
+	//Set the alnguage array.
+	eval('if(' + lang + '!== undefined) greetings = ' + lang + ';', 0);
 }
 
 /*
@@ -73,6 +75,8 @@ function initData() {
 	if(limageIndex !== undefined && limageIndex !== null) imageIndex = limageIndex;
 	var llastInc = localStorage.getItem('lastInc');
 	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
+	var llang = localStorage.getItem('lang');
+	if(llang !== undefined && llang !== null) lang = llang;
 }
 
 /*
@@ -110,6 +114,82 @@ function updateTime() {
 */
 //-----------------------------------------------------------
 
+var german = [
+	{
+		greeting: "Guten Morgen",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "Guten Nachmittag",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "Guten Abend",
+		start: 19,
+		end: 23
+	}
+];
+german .default = "Hallo";
+
+var english = [
+	{
+		greeting: "Good morning",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "Good afternoon",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "Good evening",
+		start: 19,
+		end: 23
+	}
+];
+english.default = "Hello";
+
+var dutch = [
+	{
+		greeting: "Goedmorgen",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "Goedmiddag",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "Goedeavond",
+		start: 19,
+		end: 23
+	}
+];
+dutch.default = "Hallo";
+
+var french = [
+	{
+		greeting: "Bonjour",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "Bonjour",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "Bonsoir",
+		start: 19,
+		end: 23
+	}
+];
+french.default = "Salut";
+
 function updateGreeting() {
     var date = new Date;
     var h = date.getHours();
@@ -118,12 +198,25 @@ function updateGreeting() {
 }
 
 function generateGreeting(h) {
-    if(h < 6) return "Hallo";
-    if(h < 11) return "Guten Morgen";
-    if(h < 14) return "Hallo";
-    if(h < 18) return "Guten Nachmittag";
-    if(h < 19) return "Hallo";
-    if(h < 23) return "Guten Abend";
+	var greeting = '';
+	for(var i = 0; i < greetings.length; i++) {
+		var elm = greetings[i];
+		if(elm.start <= h && elm.end > h) {
+			greeting = elm.greeting;
+		}
+	}
+	if(greeting === '') {
+		greeting = greetings.default;
+	}
+	return greeting;
+	/*
+    if(h < 6) return greetings[0];
+    if(h < 11) return greetings[1];
+    if(h < 14) return greetings[2];
+    if(h < 18) return greetings[3];
+    if(h < 19) return greetings[4];
+    if(h < 23) return greetings[5];
+	*/
 }
 
 //--------------------------------------------------------------
@@ -240,7 +333,7 @@ function updateBackground() {
 	$('body').css('background-image', 'url('+ images[imageIndex].src +')');
 	//Now update the credit.
 	$('#credit-title').html(images[imageIndex].desc);
-	$('#credit-author').html(images[imageIndex].credit);
+	$('#credit-author').html('by ' + images[imageIndex].credit);
 	$('#credits').attr('href', images[imageIndex].link);
 }
 
