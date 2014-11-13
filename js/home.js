@@ -40,7 +40,24 @@ function setup() {
 	//Check which background image should be used.
 	displayNextImage();
 	//Set the alnguage array.
-	eval('if(' + lang + '!== undefined) greetings = ' + lang + ';', 0);
+	initGreetings();
+}
+
+/*
+	A function to set teh greetings array.
+*/
+function initGreetings() {
+	//Yes we use many ifs, because eval is to dangerous for Chrome extensions and to lazy for sandbox
+	//https://developer.chrome.com/extensions/sandboxingEval
+	if(lang === 'german'){
+		greetings = german;
+	} else if(lang === 'english') {
+		greetings = english;
+	} else if(lang === 'french') {
+		greetings = french;
+	} else if(lang === 'dutch') {
+		greetings = dutch;
+	}
 }
 
 /*
@@ -198,6 +215,9 @@ function updateGreeting() {
 }
 
 function generateGreeting(h) {
+	if(greetings.length === 0 && greetings.default === undefined) {
+		return 'Hello';	//Standard english greeting if none present.
+	}
 	var greeting = '';
 	for(var i = 0; i < greetings.length; i++) {
 		var elm = greetings[i];
