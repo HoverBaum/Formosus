@@ -166,7 +166,7 @@ var german = [
 		end: 11
 	},
 	{
-		greeting: "Guten Tag",
+		greeting: "Guten Nachmittag",
 		start: 14,
 		end: 18
 	},
@@ -234,7 +234,6 @@ var french = [
 	}
 ];
 french.default = "Salut";
-
 
 function updateGreeting() {
     var date = new Date;
