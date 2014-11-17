@@ -371,6 +371,24 @@ var general = [
 		desc: 'Grand Tetons',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png'
+	},
+	{
+		src: 'https://farm5.staticflickr.com/4074/4748081550_afd101e13b_o.jpg',
+		desc: 'Millstone, New Jersey',
+		credit: 'b k',
+		link: 'https://www.flickr.com/photos/30201239@N00/4748081550/'
+	},
+	{
+		src: 'https://farm9.staticflickr.com/8337/8280717520_6827a9d8f3_o.jpg',
+		desc: 'Dublin, Ireland',
+		credit: 'Nicolas Raymond',
+		link: 'https://www.flickr.com/photos/82955120@N05/8280717520/'
+	},
+	{
+		src: 'https://farm7.staticflickr.com/6084/6150982426_92fa5d1b71_o.jpg',
+		desc: 'Mystic forest',
+		credit: 'János Csongor Kerekes',
+		link: 'https://www.flickr.com/photos/30420396@N03/6150982426/'
 	}
 ]
 
