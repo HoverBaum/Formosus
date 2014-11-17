@@ -27,6 +27,13 @@ $(document).ready(function() {
 function registerHooks() {
     $("#search-js").keypress(search);
 	$('#name-input').keyup(resizeName);
+	$('#cog').click(showOptions);
+	$('#overlay').click(function(e) {
+		if(e.target.id === "overlay") {
+			$(this).fadeOut(300);
+		}
+	});
+	$('#save-options').click(saveOptions);
 }
 
 /*
@@ -58,6 +65,7 @@ function initGreetings() {
 	} else if(lang === 'dutch') {
 		greetings = dutch;
 	}
+	updateGreeting();
 }
 
 /*
@@ -94,6 +102,26 @@ function initData() {
 	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
 	var llang = localStorage.getItem('lang');
 	if(llang !== undefined && llang !== null) lang = llang;
+}
+
+/*
+	Display the option to change languages.
+*/
+function showOptions() {
+	$('#overlay').fadeIn(300);
+	$('#lang-select').val(lang);
+}
+
+/*
+	Save the selected options.
+*/
+function saveOptions() {
+	console.debug("saving options")
+	//Save selected language
+	lang = $('#lang-select').val();
+	initGreetings();
+	console.debug("new lang "+ lang)
+	localStorage.setItem('lang', lang);
 }
 
 /*

@@ -94,15 +94,24 @@ h1 {
 	opacity: 0.8;
 }
 
-#credits {
+/*
+	Stuff at the bottom left.
+*/
+
+#bottom-left {
 	position: absolute;
 	bottom: 1em;
 	left: 1em;
 	color: white;
 	opacity: 0.8;
-	cursor: pointer;
+}
+
+#credits {
+	color: white;
 	transition: all 0.3 ease-out;
 	text-decoration: none;
+	display: block;
+	margin-left: 1.3em;
 }
 
 #credits:hover {
@@ -118,4 +127,85 @@ h1 {
 	display: block;
 	overflow: hidden;
 	transition: all 0.3s ease-out;
+}
+
+#cog {
+	display: block;
+	opacity: 0.6;
+	font-size: 0.9em;
+	margin-right: 0.2em;
+	position: absolute;
+	bottom: 0;
+	transition: all 0.3s ease-out;
+}
+
+#cog:hover {
+	cursor: pointer;
+	opacity: 1;
+	font-size: 1.3em;
+}
+
+/*
+	The overlay for options
+*/
+
+#overlay {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	background-color: rgba(0,0,0,0.4);
+}
+
+#options {
+	color: black;
+	display: block;
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	left: 50%;
+	margin-left: -300px;
+	top: 50%;
+	margin-top: -200px;
+	background-color: #f2f2f2;
+	border-radius: 7px;
+	padding: 1em;
+	text-align: center;
+	border: 1px solid #999;
+}
+
+#options h1 {
+	color: black;
+	margin-bottom: 0.5em;
+}
+
+#lang-select {
+	width: 100px;
+	height: 2em;
+}
+
+.button {
+	width: 200px;
+	padding: 0.5em;
+	font-size: 1.3em;
+	display: block;
+	background-color: #fff;
+	border: 1px solid #bbb;
+	border-radius: 3px;
+	position: absolute;
+	bottom: 1em;
+	left: 50%;
+	margin-left: -100px;
+	box-sizing: border-box;
+	cursor: pointer;
+	transition: all 0.3s ease-out;
+	opacity: 0.7;
+}
+
+.button:hover {
+	opacity: 1;
+	border: 1px solid #000;
 }
