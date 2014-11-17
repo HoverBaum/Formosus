@@ -2,8 +2,8 @@
  	"manifest_version": 2,
 
 	"name": "CleanTab",
-  	"description": "Replaces the 'New Tab' tab.",
-  	"version": "0.8",
+  	"description": "Replaces the 'New Tab' tab with a clean page. Including a personalizable greating and an advenced search bar.",
+  	"version": "1",
 
 	"chrome_url_overrides" : {
     	"newtab": "index.html"
