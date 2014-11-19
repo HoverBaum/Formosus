@@ -425,6 +425,36 @@ var general = [
 		desc: 'Levisham, England',
 		credit: 'Thomas Tolkien',
 		link: 'https://www.flickr.com/photos/38585972@N04/5599206232/'
+	},
+	{
+		src: 'https://farm4.staticflickr.com/3804/9962065613_0f3e565e9d_o.jpg',
+		desc: 'Dungeness, England',
+		credit: 'Simon & His Camera',
+		link: 'https://www.flickr.com/photos/46267286@N07/9962065613/'
+	},
+	{
+		src: 'https://farm9.staticflickr.com/8167/7479317540_6b27ab7f42_o.jpg',
+		desc: 'St. Ives, England',
+		credit: 'Nana B Agyei',
+		link: 'https://www.flickr.com/photos/32876353@N04/7479317540/'
+	},
+	{
+		src: 'https://farm4.staticflickr.com/3012/3017515135_3efd8cfea9_o.jpg',
+		desc: 'St Lawrence Market, Toronto',
+		credit: 'paul bica',
+		link: 'https://www.flickr.com/photos/99771506@N00/3017515135/'
+	},
+	{
+		src: 'https://farm3.staticflickr.com/2512/4047744775_f72ddb1fe6_o.jpg',
+		desc: 'Dundas Peak, Burlington',
+		credit: 'paul bica',
+		link: 'https://www.flickr.com/photos/99771506@N00/4047744775/'
+	},
+	{
+		src: 'https://farm4.staticflickr.com/3645/3516991571_c30767ea25_o.jpg',
+		desc: 'Kota Baharu, Kelantan',
+		credit: 'Fayez Closed Account.',
+		link: 'https://www.flickr.com/photos/22784594@N07/3516991571/'
 	}
 ]
 
