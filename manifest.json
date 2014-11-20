@@ -1,12 +1,16 @@
 {
  	"manifest_version": 2,
 
-	"name": "CleanTab",
+	"name": "Beautiful new tab",
   	"description": "Replaces the 'New Tab' tab.",
-  	"version": "0.8",
-
+  	"version": "1.0",
 	"chrome_url_overrides" : {
     	"newtab": "index.html"
-  	}
+  	},
+	"icons": { 
+		"16": "img/icon16.png",
+        "48": "img/icon48.png",
+    	"128": "img/icon128.png" 
+	}
 	
 }
