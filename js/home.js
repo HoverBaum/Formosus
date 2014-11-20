@@ -331,12 +331,6 @@ function resizeName(e) {
 
 var general = [
 	{
-		src: 'https://farm3.staticflickr.com/2946/15349166041_e2012546ec_k.jpg',
-		desc: 'Autum forest',
-		credit: 'Olli',
-		link: 'https://www.flickr.com/photos/84814657@N04/15349166041/'
-	},
-	{
 		src: 'https://farm8.staticflickr.com/7153/6830946505_494e7aafb2_o.jpg',
 		desc: 'Ayr, Scotland',
 		credit: 'Graeme Law',
@@ -362,13 +356,13 @@ var general = [
 	},
 	{
 		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png',
-		desc: 'Grand Tetons',
+		desc: 'Grand Tetons, Wyoming',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png'
 	},
 	{
 		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png',
-		desc: 'Grand Tetons',
+		desc: 'Grand Tetons, Wyoming',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png'
 	},
@@ -383,12 +377,6 @@ var general = [
 		desc: 'Dublin, Ireland',
 		credit: 'Nicolas Raymond',
 		link: 'https://www.flickr.com/photos/82955120@N05/8280717520/'
-	},
-	{
-		src: 'https://farm7.staticflickr.com/6084/6150982426_92fa5d1b71_o.jpg',
-		desc: 'Mystic forest',
-		credit: 'János Csongor Kerekes',
-		link: 'https://www.flickr.com/photos/30420396@N03/6150982426/'
 	},
 	{
 		src: 'https://farm9.staticflickr.com/8390/8527726214_0f49a48da7_o.jpg',
