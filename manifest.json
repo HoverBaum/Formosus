@@ -1,8 +1,8 @@
 {
  	"manifest_version": 2,
 
-	"name": "Beautiful new tab",
-  	"description": "Replaces the 'New Tab' tab.",
+	"name": "Formosus",
+  	"description": "Replaces the 'New Tab' tab, featuring beautiful backgrounds, current time and personalized greetings.",
   	"version": "1.0",
 	"chrome_url_overrides" : {
     	"newtab": "index.html"
