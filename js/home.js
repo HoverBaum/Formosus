@@ -403,18 +403,6 @@ var general = [
 		link: 'https://www.flickr.com/photos/82955120@N05/15195213694/'
 	},
 	{
-		src: 'https://farm6.staticflickr.com/5581/15174259515_5ac7115e2a_b.jpg',
-		desc: 'Ross, Pennsylvania',
-		credit: 'Nicholas A. Tonelli',
-		lik: 'https://www.flickr.com/photos/14922165@N00/15174259515/'
-	},
-	{
-		src: 'https://farm6.staticflickr.com/5109/5599206232_25cdaac902_o.jpg',
-		desc: 'Levisham, England',
-		credit: 'Thomas Tolkien',
-		link: 'https://www.flickr.com/photos/38585972@N04/5599206232/'
-	},
-	{
 		src: 'https://farm4.staticflickr.com/3804/9962065613_0f3e565e9d_o.jpg',
 		desc: 'Dungeness, England',
 		credit: 'Simon & His Camera',
