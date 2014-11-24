@@ -278,18 +278,21 @@ function search(e) {
     var term = $("#search-js").val();
     var form = document.getElementById("searchForm");
     if(term.indexOf("!") === 0){
-        if(term.indexOf("!w.de ") > -1) {
-            term = term.replace("!w.de ", "");
-            form.action="http://en.wikipedia.org/wiki/" + term;
-            $("#searchTerm-js").val("");
-            form.submit();
-        }else if(term.indexOf("!w ") > -1) {
-            term = term.replace("!w ", "");
-            form.action="http://en.wikipedia.org/wiki/" + term;
-            $("#searchTerm-js").val("");
-            form.submit();
-        }
-        if(term.indexOf("!y ") > -1) {              //want to search youtube
+		if(term.indexOf("!w ") > -1) {
+			term = term.replace("!w", "!w.en");
+		}
+		if(term.match(/!w\.?.*/) !== null) {
+			term = term.replace(/!w\.*/, "");
+			if(term.indexOf(" ") === 2) {
+				//We have a two cha long identifier for languages.
+				var id = term.substr(0,2);
+				term = term.substring(3);
+				form.action='http://' + id + '.wikipedia.org/wiki/' + term;
+            	$('#searchTerm-js').val("");
+				form.submit();	
+			}
+		} 
+		if(term.indexOf("!y ") > -1) {              //want to search youtube
             term = term.replace("!y ", "");         //take away the "command"
             form.action="http://youtube.com/results";//set URL
             $("#searchTerm-js").val(term);          //set what to search for
@@ -298,10 +301,10 @@ function search(e) {
             form.submit();                          //Do search
         }
     } else {
-        form.action="http://google.com/search";
+       /* form.action="http://google.com/search";
         $("#searchTerm-js").val(term);
         form.method="GET";
-        form.submit();
+        form.submit();*/
     }
 }
 
@@ -331,7 +334,7 @@ function resizeName(e) {
 
 var general = [
 	{
-		src: 'https://farm8.staticflickr.com/7153/6830946505_494e7aafb2_o.jpg',
+		src: 'backgrounds/6830946505_494e7aafb2_o.jpg',
 		desc: 'Ayr, Scotland',
 		credit: 'Graeme Law',
 		link: 'https://www.flickr.com/photos/14534290@N04/6830946505/'
