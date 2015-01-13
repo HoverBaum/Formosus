@@ -199,7 +199,7 @@ english.default = "Hello";
 
 var dutch = [
 	{
-		greeting: "Goedmorgen",
+		greeting: "Goedemorgen",
 		start: 6,
 		end: 11
 	},
@@ -340,97 +340,97 @@ var general = [
 		link: 'https://www.flickr.com/photos/14534290@N04/6830946505/'
 	},
 	{
-		src: 'https://farm9.staticflickr.com/8233/8369468069_2f7a342bcf_k.jpg',
+		src: 'backgrounds/8369468069_2f7a342bcf_k.jpg',
 		desc: 'Bixad, Romania',
 		credit: 'János Csongor Kerekes',
 		link: 'https://www.flickr.com/photos/30420396@N03/8369468069/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3187/2904369145_daf89c90f2_o.jpg',
+		src: 'backgrounds/2904369145_daf89c90f2_o.jpg',
 		desc: 'Lake in Colorado',
 		credit: 'ellenm1',
 		link: 'https://www.flickr.com/photos/47051377@N00/2904369145/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3891/14392592291_d8f102a7ae_k.jpg',
+		src: 'backgrounds/14392592291_d8f102a7ae_k.jpg',
 		desc: 'Lake in Idaho',
 		credit: 'megaguilarphotography',
 		link: 'https://www.flickr.com/photos/megaguilarphotography/14392592291/in/photostream/'
 	},
 	{
-		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png',
+		src: 'backgrounds/farm1.png',
 		desc: 'Grand Tetons, Wyoming',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/farm1.png'
 	},
 	{
-		src: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png',
+		src: 'backgrounds/grandteton.png',
 		desc: 'Grand Tetons, Wyoming',
 		credit: 'Jace Flournoy',
 		link: 'http://i1248.photobucket.com/albums/hh495/Skitstep/grandteton.png'
 	},
 	{
-		src: 'https://farm5.staticflickr.com/4074/4748081550_afd101e13b_o.jpg',
+		src: 'backgrounds/4748081550_afd101e13b_o.jpg',
 		desc: 'Millstone, New Jersey',
 		credit: 'b k',
 		link: 'https://www.flickr.com/photos/30201239@N00/4748081550/'
 	},
 	{
-		src: 'https://farm9.staticflickr.com/8337/8280717520_6827a9d8f3_o.jpg',
+		src: 'backgrounds/8280717520_6827a9d8f3_o.jpg',
 		desc: 'Dublin, Ireland',
 		credit: 'Nicolas Raymond',
 		link: 'https://www.flickr.com/photos/82955120@N05/8280717520/'
 	},
 	{
-		src: 'https://farm9.staticflickr.com/8390/8527726214_0f49a48da7_o.jpg',
+		src: 'backgrounds/8527726214_0f49a48da7_o.jpg',
 		desc: 'Sinalia, Romania',
 		credit: 'fusion-of-horizons',
 		link: 'https://www.flickr.com/photos/9019841@N08/8527726214/'
 	},
 	{
-		src: 'https://farm1.staticflickr.com/115/256892528_8c52ec7efe_o.jpg',
+		src: 'backgrounds/256892528_8c52ec7efe_o.jpg',
 		desc: 'Blakeslee, Pennsylvania',
 		credit: 'Nicholas A. Tonelli',
 		link: 'https://www.flickr.com/photos/14922165@N00/256892528/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3857/15195195168_b323b238a5_o.jpg',
+		src: 'backgrounds/15195195168_b323b238a5_o.jpg',
 		desc: 'Deschutes, Oregon',
 		credi: 'Sheila Sund',
 		link: 'https://www.flickr.com/photos/90692748@N04/15195195168/'
 	},
 	{
-		src: 'https://farm8.staticflickr.com/7492/15195213694_16249d87b3_o.jpg',
+		src: 'backgrounds/15195213694_16249d87b3_o.jpg',
 		desc: 'National Arboretum, Washington D.C.',
 		credit: 'Nicolas Raymond',
 		link: 'https://www.flickr.com/photos/82955120@N05/15195213694/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3804/9962065613_0f3e565e9d_o.jpg',
+		src: 'backgrounds/9962065613_0f3e565e9d_o.jpg',
 		desc: 'Dungeness, England',
 		credit: 'Simon & His Camera',
 		link: 'https://www.flickr.com/photos/46267286@N07/9962065613/'
 	},
 	{
-		src: 'https://farm9.staticflickr.com/8167/7479317540_6b27ab7f42_o.jpg',
+		src: 'backgrounds/7479317540_6b27ab7f42_o.jpg',
 		desc: 'St. Ives, England',
 		credit: 'Nana B Agyei',
 		link: 'https://www.flickr.com/photos/32876353@N04/7479317540/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3012/3017515135_3efd8cfea9_o.jpg',
+		src: 'backgrounds/3017515135_3efd8cfea9_o.jpg',
 		desc: 'St Lawrence Market, Toronto',
 		credit: 'paul bica',
 		link: 'https://www.flickr.com/photos/99771506@N00/3017515135/'
 	},
 	{
-		src: 'https://farm3.staticflickr.com/2512/4047744775_f72ddb1fe6_o.jpg',
+		src: 'backgrounds/4047744775_f72ddb1fe6_o.jpg',
 		desc: 'Dundas Peak, Burlington',
 		credit: 'paul bica',
 		link: 'https://www.flickr.com/photos/99771506@N00/4047744775/'
 	},
 	{
-		src: 'https://farm4.staticflickr.com/3645/3516991571_c30767ea25_o.jpg',
+		src: 'backgrounds/3516991571_c30767ea25_o.jpg',
 		desc: 'Kota Baharu, Kelantan',
 		credit: 'Fayez Closed Account.',
 		link: 'https://www.flickr.com/photos/22784594@N07/3516991571/'
