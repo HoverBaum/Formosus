@@ -16,7 +16,6 @@ $(document).ready(function() {
 	images = general;
 	initData();
 	setup();
-	resizeName();
     hourlyTasks();
 	minutlyTasks();
     hourInterval = setInterval(hourlyTasks, 3600000);
@@ -43,11 +42,10 @@ function setup() {
 	//Display the users name.
 	if(name !== undefined && name !== null && name !== '') {
 		document.getElementById('name-input').value = name;
+		resizeName();
 	}
 	//Check which background image should be used.
 	displayNextImage();
-	//Set the alnguage array.
-	initGreetings();
 }
 
 /*
@@ -92,16 +90,30 @@ function displayNextImage() {
 
 /*
 	Initializes variables that may be stored locally.
+	
+	Keep in mind that sync storage is working asynchronously.
 */
 function initData() {
-	var lname = localStorage.getItem('name');
-	if(lname !== undefined && lname !== null) name = lname;
 	var limageIndex = localStorage.getItem('imageIndex');
 	if(limageIndex !== undefined && limageIndex !== null) imageIndex = limageIndex;
 	var llastInc = localStorage.getItem('lastInc');
 	if(llastInc !== undefined && llastInc !== null) lastInc = llastInc;
-	var llang = localStorage.getItem('lang');
-	if(llang !== undefined && llang !== null) lang = llang;
+	chrome.storage.sync.get(['lang', 'name'], function(item) {
+		console.log(item);
+		
+		//Check for name.
+		if(item.name) {
+			name = item.name;
+			document.getElementById('name-input').value = name;
+			resizeName();
+		}
+		
+		//Check for language.
+		if(item.lang) {
+			lang = item.lang;
+			initGreetings();
+		}
+	});
 }
 
 /*
@@ -121,7 +133,25 @@ function saveOptions() {
 	lang = $('#lang-select').val();
 	initGreetings();
 	console.debug("new lang "+ lang)
-	localStorage.setItem('lang', lang);
+	chrome.storage.sync.set({'lang': lang}, function() {
+		
+		//Let user know it worked.
+		settingsSaved();
+	});
+}
+
+/*
+	Gives the user feedback that settings are saved.
+*/
+function settingsSaved() {
+	document.getElementById('saved-text').innerHTML = greetings.saved;
+	$('#overlay').fadeOut(300);
+	$('#save-overlay').fadeIn(300);
+	
+	//Wait 1sec and fade out the feedback.
+	setTimeout(function() {
+		$('#save-overlay').fadeOut(300);
+	}, 1000);
 }
 
 /*
@@ -176,7 +206,8 @@ var german = [
 		end: 23
 	}
 ];
-german .default = "Hallo";
+german.default = "Hallo";
+german.saved = "Gespeichert"
 
 var english = [
 	{
@@ -196,6 +227,7 @@ var english = [
 	}
 ];
 english.default = "Hello";
+english.saved = "Saved";
 
 var dutch = [
 	{
@@ -215,6 +247,7 @@ var dutch = [
 	}
 ];
 dutch.default = "Hallo";
+dutch.saved = "";
 
 var french = [
 	{
@@ -234,6 +267,7 @@ var french = [
 	}
 ];
 french.default = "Salut";
+french.saved = "";
 
 function updateGreeting() {
     var date = new Date;
@@ -314,7 +348,7 @@ function resizeName(e) {
 	var val = $input.val();
 	$span.text(val);
 	$input.css('width', $span.css('width'));
-	localStorage.setItem('name', val);
+	chrome.storage.sync.set({'name': val});
 }
 
 //---------------------------------------------------------------------
@@ -434,6 +468,18 @@ var general = [
 		desc: 'Kota Baharu, Kelantan',
 		credit: 'Fayez Closed Account.',
 		link: 'https://www.flickr.com/photos/22784594@N07/3516991571/'
+	},
+	{
+		src: 'backgrounds/14813605612_fb2465b29e_o.jpg',
+		desc: 'Cairndow, Scotland',
+		credit: 'Gary Crawford.',
+		link: 'https://www.flickr.com/photos/95406158@N00/14813605612/'
+	},
+	{
+		src: 'backgrounds/4080392332_6e3835b488_o.jpg',
+		desc: 'Sutton, Ontario',
+		credit: 'Paul Bica.',
+		link: 'https://www.flickr.com/photos/99771506@N00/4080392332/'
 	}
 ]
 

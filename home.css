@@ -166,7 +166,7 @@ h1 {
 	The overlay for options
 */
 
-#overlay {
+.overlay {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -177,7 +177,7 @@ h1 {
 	background-color: rgba(0,0,0,0.4);
 }
 
-#options {
+.panel {
 	color: black;
 	display: block;
 	position: absolute;
@@ -194,7 +194,7 @@ h1 {
 	border: 1px solid #999;
 }
 
-#options h1 {
+.panel h1 {
 	color: black;
 	margin-bottom: 0.5em;
 }
@@ -225,4 +225,12 @@ h1 {
 .button:hover {
 	opacity: 1;
 	border: 1px solid #000;
+}
+
+#saved {
+	padding: 1em;
+	width: 400px;
+	margin-left: -200px;
+	height: 75px;
+	margin-top: -75px;
 }
