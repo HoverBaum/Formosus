@@ -73,7 +73,7 @@ function initGreetings() {
 function localize() {
 	document.getElementById('saved-text').innerHTML = greetings.saved;
 	document.getElementById('save-options').innerHTML = greetings.save;
-	
+	document.getElementById('lang-options').innerHTML = greetings.options;
 }
 
 /*
@@ -218,6 +218,7 @@ var german = [
 german.default = "Hallo";
 german.saved = "Gespeichert";
 german.save = "Speichern";
+german.options = "Optionen";
 
 var english = [
 	{
@@ -239,6 +240,7 @@ var english = [
 english.default = "Hello";
 english.saved = "Saved";
 english.save = "Save";
+english.options = "Options";
 
 var dutch = [
 	{
@@ -259,7 +261,8 @@ var dutch = [
 ];
 dutch.default = "Hallo";
 dutch.saved = "Gered";
-durch.save = "Sparen";
+dutch.save = "Sparen";
+dutch.options = "Opties";
 
 var french = [
 	{
@@ -281,6 +284,8 @@ var french = [
 french.default = "Salut";
 french.saved = "Sauvé";
 french.save = "Sauver";
+french.options = "Options";
+
 
 function updateGreeting() {
     var date = new Date;
