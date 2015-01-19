@@ -260,8 +260,8 @@ var dutch = [
 	}
 ];
 dutch.default = "Hallo";
-dutch.saved = "Gered";
-dutch.save = "Sparen";
+dutch.saved = "Opgeslagen";
+dutch.save = "Opslaan";
 dutch.options = "Opties";
 
 var french = [
@@ -353,10 +353,10 @@ function search(e) {
             form.submit();                          //Do search
         }
     } else {
-       /* form.action="http://google.com/search";
+        form.action="http://google.com/search";
         $("#searchTerm-js").val(term);
         form.method="GET";
-        form.submit();*/
+        form.submit();
     }
 }
 
@@ -498,6 +498,18 @@ var general = [
 		desc: 'Sutton, Ontario',
 		credit: 'Paul Bica.',
 		link: 'https://www.flickr.com/photos/99771506@N00/4080392332/'
+	},
+	{
+		src: 'backgrounds/mout-72366.jpg',
+		desc: 'Mount Hood, Oregon',
+		credit: 'pixabay.',
+		link: 'http://pixabay.com/'
+	},
+	{
+		src: 'backgrounds/flower-garden-250016.jpg',
+		desc: 'Hokkaidō, Japan',
+		credit: 'pixabay.',
+		link: 'http://pixabay.com/'
 	}
 ]
 
