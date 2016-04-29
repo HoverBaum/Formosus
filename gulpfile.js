@@ -13,8 +13,16 @@ var htmlmin = require('gulp-htmlmin');
 	At least we remove comments...
  */
 
-gulp.task('default', function () {
-    return gulp.src('index.html')
+/**
+ *   Copy over files that need no handling.
+ */
+gulp.task('assets', function() {
+	gulp.src(['manifest.json', 'fonts/**/*', 'img/**/*'],{base: './'})
+	.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('default', ['assets'], function () {
+    gulp.src('index.html')
         .pipe(useref())
 		.pipe(gulpif('*.css', minifyCss()))
 		.pipe(gulpif('*.js', strip()))
