@@ -9,6 +9,7 @@ var config = {
 }
 
 function init() {
+    setBackground();
     transformDOMEvents();
     registerListeners();
 
