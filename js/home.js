@@ -1,7 +1,8 @@
-hourInterval = null;	//Intervall for hourly tasks.
-name = '';				//Name of the user.
-lang = 'english';		//Which language to use.
-var greetings = [];		//The different greetings.
+hourInterval = null;		//Intervall for hourly tasks.
+name = '';					//Name of the user.
+lang = 'english';			//Which language to use.
+var greetings = [];			//The different greetings.
+var startTime = Date.now();
 
 //-------------------------------------------------------------
 /*
@@ -16,7 +17,6 @@ $(document).ready(function() {
 	minutlyTasks();
     hourInterval = setInterval(hourlyTasks, 3600000);
 	minuteInterval = setInterval(minutlyTasks, 1000);
-    registerHooks();
 });
 
 function registerHooks() {
@@ -36,11 +36,12 @@ function registerHooks() {
 function setup() {
 
 	//Display the users name.
-	if(name !== undefined && name !== null && name !== '     ') {
+	if(name !== undefined && name !== null) {
 		document.getElementById('name-input').value = name;
 		resizeName();
-
 	}
+	updateGreeting();
+	registerHooks();
 }
 
 /*
@@ -77,9 +78,11 @@ function localize() {
 
 	Keep in mind that sync storage is working asynchronously.
 */
-function initData() {
+function initData(callback) {
 	chrome.storage.sync.get(['lang', 'name'], function(item) {
-		console.log(item);
+		console.debug(item);
+		var startUpTime = Date.now() - startTime;
+		console.debug(`Starting took ${startUpTime / 1000}s`);
 
 		//Check for name.
 		if(item.name) {
@@ -91,8 +94,8 @@ function initData() {
 		//Check for language.
 		if(item.lang) {
 			lang = item.lang;
-			initGreetings();
 		}
+
 	});
 }
 
@@ -198,7 +201,8 @@ function generateGreeting(h) {
 */
 //-----------------------------------------------------------------
 
-function resizeName(e) {
+function resizeName() {
+	console.debug(`Resizing name`);
 	var $input = $('#name-input');
 	var $span = $('#name-js');
 	var val = $input.val();
