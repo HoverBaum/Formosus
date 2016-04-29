@@ -200,5 +200,3 @@ function intervalTasks() {
     calculateGreeting();
     displayTime();
 }
-
-init();

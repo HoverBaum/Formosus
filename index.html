@@ -11,13 +11,20 @@
 	<title>Welcome Home</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta charset="utf-8">
+
+	<!-- build:css style.css -->
 	<link rel="stylesheet" style="text/css" href="css/reset.css" />
 	<link rel="stylesheet" style="text/css" href="css/home.css" />
 	<link rel="stylesheet" style="text/css" href="css/icons.css" />
+	<!-- endbuild -->
+
+	<!-- build:js scripts.js -->
 	<script src="js/languages.js"></script>
 	<script src="js/pubsub.js"></script>
 	<script src="js/greetingClock.js"></script>
 	<script src="js/background.js"></script>
+	<script src="js/formosus.js"></script>
+	<!-- endbuild -->
 </head>
 
 <body>
@@ -69,7 +76,9 @@
 
 	</div>
 
-	<script src="js/formosus.js"></script>
+	<!-- build:js init.js -->
+	<script src="js/initScript.js"></script>
+	<!-- endbuild -->
 
 </body>
 
