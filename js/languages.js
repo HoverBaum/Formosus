@@ -1,6 +1,24 @@
+/**
+ *   Updates a set of strings to those defined by a given language in config.
+ *   @param  {[type]} config [description]
+ *   @return {[type]}
+ */
+function updateLanguageStrings(language) {
+	IDsToUpdate.forEach(update => {
+		var elm = document.getElementById(update.id);
+		elm.innerHTML = languages[language][update.text];
+	});
+}
 
+// Informationa bout which elements contain translatable strings.
+const IDsToUpdate = [
+	{
+		id: 'close-options',
+		text: 'close'
+	}
+];
 
-var german = [
+const german = [
 	{
 		greeting: "Guten Morgen",
 		start: 6,
@@ -18,11 +36,9 @@ var german = [
 	}
 ];
 german.default = "Hallo";
-german.saved = "Gespeichert";
-german.save = "Speichern";
-german.options = "Einstellungen";
+german.close = 'Schließen';
 
-var english = [
+const english = [
 	{
 		greeting: "Good morning",
 		start: 6,
@@ -40,11 +56,9 @@ var english = [
 	}
 ];
 english.default = "Hello";
-english.saved = "Saved";
-english.save = "Save";
-english.options = "Options";
+english.close = 'Close';
 
-var dutch = [
+const dutch = [
 	{
 		greeting: "Goedemorgen",
 		start: 6,
@@ -62,11 +76,9 @@ var dutch = [
 	}
 ];
 dutch.default = "Hallo";
-dutch.saved = "Opgeslagen";
-dutch.save = "Opslaan";
-dutch.options = "Opties";
+dutch.close = 'Dichtbij';
 
-var french = [
+const french = [
 	{
 		greeting: "Bonjour",
 		start: 6,
@@ -84,6 +96,11 @@ var french = [
 	}
 ];
 french.default = "Salut";
-french.saved = "Sauvé";
-french.save = "Sauver";
-french.options = "Options";
+french.close = 'Fermer';
+
+const languages = {
+	german: german,
+	english: english,
+	dutch: dutch,
+	french: french
+}

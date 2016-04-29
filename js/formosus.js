@@ -1,4 +1,9 @@
 const localStorage = window.localStorage;
+
+/**
+ *   Configuration object, storring users preferences.
+ *   @type {Object}
+ */
 var config = {
     language: 'english'
 }
@@ -9,6 +14,9 @@ function init() {
 
     loadData();
     enableOptions();
+
+    intervalTasks();
+    setInterval(intervalTasks, 5000);
 }
 
 /**
@@ -48,6 +56,7 @@ function transformDOMEvents() {
     langInput.addEventListener('change', function() {
         config.language = langInput.value;
         emit('config-changed', config);
+        emit('language-changed', config.language);
     });
 }
 
@@ -60,6 +69,11 @@ function registerListeners() {
 
     subscribe('config-changed', saveConfig);
     subscribe('config-changed', displayConfig);
+
+    subscribe('language-changed', updateLanguageStrings);
+    subscribe('language-changed', calculateGreeting);
+
+    subscribe('greeting-changed', displayGreeting);
 }
 
 /**
@@ -113,6 +127,14 @@ function displayConfig(config) {
  */
 function saveConfig(config) {
     localStorage.setItem('config', JSON.stringify(config));
+}
+
+/**
+ *   Execute all tasks that should be regularly executed.
+ */
+function intervalTasks() {
+    calculateGreeting();
+    displayTime();
 }
 
 init();
