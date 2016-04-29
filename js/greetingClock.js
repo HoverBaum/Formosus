@@ -13,6 +13,9 @@ function displayGreeting(greeting) {
 function calculateGreeting() {
     let h = new Date().getHours();
     let greetings = languages[config.language];
+    if(greetings === undefined) {
+        return 'Hello';
+    }
 	if(greetings.length === 0 && greetings.default === undefined) {
 		return 'Hello';	//Standard english greeting if none present.
 	}

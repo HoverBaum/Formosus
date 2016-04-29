@@ -7,3 +7,5 @@ function setBackground() {
     let url = `https://source.unsplash.com/category/nature/${width}x${height}/daily`;
     document.querySelector('#background').src = url;
 }
+
+//TODO handle window resizes

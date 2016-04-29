@@ -102,7 +102,7 @@ function loadName() {
     emit('name-changed', name);
 
     //Then check chrom storage.
-    if(!chrome.storage) return;
+    if (!chrome.storage) return;
     chrome.storage.sync.get(['name'], function(item) {
 
         if (item.name) {
@@ -132,6 +132,12 @@ function displayName(name) {
  */
 function saveName(name) {
     localStorage.setItem('name', name);
+    if (!chrome.storage) return;
+    chrome.storage.sync.set({
+        'name': name
+    }, function() {
+
+    });
 }
 
 /**********************
@@ -152,10 +158,10 @@ function loadConfig() {
     emit('config-changed', config);
 
     //Then check chrom storage.
-    if(!chrome.storage) return;
+    if (!chrome.storage) return;
     chrome.storage.sync.get(['config'], function(item) {
         if (item.config) {
-            config = item.config;
+            config = JSON.parse(item.config);
             emit('config-changed', config);
             emit('language-changed', config.language);
         }
@@ -178,6 +184,13 @@ function displayConfig(config) {
  */
 function saveConfig(config) {
     localStorage.setItem('config', JSON.stringify(config));
+    if (!chrome.storage) return;
+    var configString = JSON.stringify(config);
+    chrome.storage.sync.set({
+        'config': configString
+    }, function() {
+
+    });
 }
 
 /**

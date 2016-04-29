@@ -1,12 +1,13 @@
 /**
  *   Updates a set of strings to those defined by a given language in config.
- *   @param  {[type]} config [description]
- *   @return {[type]}
+ *   @param  {string} langauge [description]
  */
 function updateLanguageStrings(language) {
 	IDsToUpdate.forEach(update => {
 		var elm = document.getElementById(update.id);
-		elm.innerHTML = languages[language][update.text];
+		if(languages[language]) {
+			elm.innerHTML = languages[language][update.text];
+		}
 	});
 }
 
