@@ -1,51 +1,54 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
+
 <head>
-	
-	<!-- 
+
+	<!--
 		This project is developed by Hendrik Wallbaum.
 		Visit us on GitHub https://github.com/HoverBaum/newTab.
 	-->
-	
+
 	<title>Welcome Home</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" /> 
-    <meta charset="utf-8">
-    <link rel="stylesheet" style="text/css" href="reset.css" />
-    <link rel="stylesheet" style="text/css" href="home.css" />
-    <link rel="stylesheet" style="text/css" href="style.css" />
-    <script src="js/jquery-2.1.1.min.js"></script>
-    <script src="js/home.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<meta charset="utf-8">
+	<link rel="stylesheet" style="text/css" href="css/reset.css" />
+	<link rel="stylesheet" style="text/css" href="css/home.css" />
+	<link rel="stylesheet" style="text/css" href="css/icons.css" />
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/languages.js"></script>
+	<script src="js/home.js"></script>
 </head>
+
 <body>
-    
+
+	<div id="backgroundHider">
+
+	</div>
+	<img id="background" src="/backgrounds/1419064642531_e575728395f2.jpg" />
+
 	<!--  The big things in the middle -->
 	<section id="wrapper">
 		<h1><span id="time-js">09:49</span><br>
-			<span id="greeting-js">Hello</span>, <input type="text" tabindex="-1" id="name-input">.<span style="display:none;" id="name-js"></span></h1>
-		<input id="search-js" type="text" placeholder="Search">
+			<span id="greeting-js">Hello</span>, <input type="text" value=" " tabindex="-1" id="name-input"><span style="display:none;" id="name-js"></span>
+		</h1>
 	</section>
-	
+
 	<!-- The things on the bottom left -->
 	<div id="bottom-left">
-		
+
 		<!-- The cogwheel -->
 		<div id="cog">
 			<i class="icon-cog"></i>
 		</div>
-		
-		<!-- Give credit to for the photos -->
-		<a href="" id="credits" tabindex="-1">
-			<span id="credit-title"></span><br>
-			<span id="credit-author"></span>
-		</a>
+
 	</div>
-	
-	
+
+	<!-- The overlay for settings -->
 	<div id="overlay" class="overlay">
-		
+
 		<div class="panel" id="options">
 			<h1 id="lang-options">Options</h1>
-			
+
 			<span>Language:</span>
 			<select id="lang-select">
 				<option value="dutch">Dutch</option>
@@ -53,21 +56,23 @@
 				<option value="english">English</option>
 				<option value="german">German</option>
 			</select>
-			
+
 			<div class="button" id="save-options">Save</div>
 		</div>
 	</div>
-	
+
+	<!-- Message to display upon saving the options -->
 	<div id="save-overlay" class="overlay">
-		
+
 		<div class="panel" id="saved">
 			<h1 id="saved-text">Saved</h1>
 		</div>
 	</div>
-		
-    <form id="searchForm">
-        <input name="q" type="text" value="" id="searchTerm-js"  tabindex="-1">
-    </form>
-</body>
-</html>
 
+	<script>
+	
+	</script>
+
+</body>
+
+</html>
