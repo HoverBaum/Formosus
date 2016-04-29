@@ -16,7 +16,7 @@ function init() {
     enableOptions();
 
     intervalTasks();
-    setInterval(intervalTasks, 5000);
+    setInterval(intervalTasks, 2000);
 }
 
 /**
@@ -25,19 +25,10 @@ function init() {
 function loadData() {
 
     //Users name.
-    let name = 'Friend';
-    let localName = localStorage.getItem('name');
-    if(localName) {
-        name = localName;
-    }
-    emit('name-changed', name);
+    loadName();
 
     //Users config.
-    let localConfig = JSON.parse(localStorage.getItem('config'));
-    if(localConfig !== undefined) {
-        config = localConfig;
-    }
-    emit('config-changed', config);
+    loadConfig();
 }
 
 /**
@@ -91,6 +82,36 @@ function enableOptions() {
     })
 }
 
+/***********************
+        The users name
+ ***********************/
+
+/**
+ *   Will load the users name.
+ *   Local storage is used for faster loading but chromes storage beats local.
+ */
+function loadName() {
+
+    //First get local storage name to have it right now.
+    let name = 'Friend';
+    let localName = localStorage.getItem('name');
+    if (localName) {
+        name = localName;
+    }
+    emit('name-changed', name);
+
+    //Then check chrom storage.
+    if(!chrome.storage) return;
+    chrome.storage.sync.get(['name'], function(item) {
+
+        if (item.name) {
+            name = item.name;
+            emit('name-changed', name);
+        }
+    });
+
+}
+
 /**
  *   Resizes the input to exactly fit the current size of the name and displays it.
  *   @param  {string} name [description]
@@ -110,6 +131,35 @@ function displayName(name) {
  */
 function saveName(name) {
     localStorage.setItem('name', name);
+}
+
+/**********************
+        Config object
+ **********************/
+
+/**
+ *   Will load the users config.
+ *   Local storage is used for faster loading but chromes storage beats local.
+ */
+function loadConfig() {
+
+    //First local.
+    let localConfig = JSON.parse(localStorage.getItem('config'));
+    if (localConfig !== undefined) {
+        config = localConfig;
+    }
+    emit('config-changed', config);
+
+    //Then check chrom storage.
+    if(!chrome.storage) return;
+    chrome.storage.sync.get(['config'], function(item) {
+        if (item.config) {
+            config = item.config;
+            emit('config-changed', config);
+            emit('language-changed', config.language);
+        }
+    });
+
 }
 
 /**
