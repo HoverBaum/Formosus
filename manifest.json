@@ -20,6 +20,6 @@
     "background": {
      "persistent": false,
      "scripts": [ "js/jquery/jquery.min.js", "js/helpers.js", "src/bg/background.js" ]
-  },
+  }
 
 }
