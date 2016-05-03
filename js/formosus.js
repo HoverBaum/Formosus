@@ -152,7 +152,7 @@ function loadConfig() {
 
     //First local.
     let localConfig = JSON.parse(localStorage.getItem('config'));
-    if (localConfig !== undefined) {
+    if (localConfig) {
         config = localConfig;
     }
     emit('config-changed', config);
