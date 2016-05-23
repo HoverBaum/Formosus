@@ -36,6 +36,10 @@ Greetings come with a start and end hour during which they should be displayed.
 }
 ```
 
+## Init script
+
+For some reason it didn't like inline scripts so we made a file with the sole purpose of starting the other javascript....
+
 # Building the Plugin
 
 To make development more convenient we split up logical parts of the plugin during development. To then also get the fastest and smallest plugin we use [Gulp](http://www.gulpjs.com/) to create smaller files.
