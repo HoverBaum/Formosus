@@ -54,4 +54,5 @@ Running `gulp` will:
 	- Removing JS comments (no minification due to ES6)
 4. Create a single file for background scripts.
 5. Update references to background script in the manifest file.
-6. Create a .ZIP archive to upload to the store.
+
+After that you can run `gulp zip` to generate a zip file. For some reason putting it all into one gave erros.

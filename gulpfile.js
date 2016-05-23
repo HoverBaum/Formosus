@@ -60,10 +60,14 @@ gulp.task('clean', function() {
 	]);
 });
 
-gulp.task('dist', ['assets', 'html', 'manifest', 'background'], function() {
+gulp.task('zip', function() {
 	gulp.src('dist/**/*')
 	.pipe(zip('formosus.zip'))
 	.pipe(gulp.dest('./'));
+});
+
+gulp.task('dist', ['assets', 'html', 'manifest', 'background'], function() {
+
 });
 
 gulp.task('default', ['clean'], function () {
