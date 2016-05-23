@@ -2,7 +2,6 @@
 
 Where we might go, or ideas.
 
-- Save images locally
 - Allow for more things, maybe todo or something (think carefully)
-- Allow user to skip to next images
+	- Don't really want to do this, we want a clean and simple thing here.
 - allow to download images
