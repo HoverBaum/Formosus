@@ -54,7 +54,10 @@ gulp.task('background', function() {
 
 //Delte old files.
 gulp.task('clean', function() {
-	return del(['dist/**/*']);
+	return del([
+		'dist/**/*',
+		'formosus.zip'
+	]);
 });
 
 gulp.task('dist', ['assets', 'html', 'manifest', 'background'], function() {
