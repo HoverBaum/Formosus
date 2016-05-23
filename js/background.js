@@ -2,10 +2,11 @@
  *	Sets the url of the background.
  */
 function setBackground() {
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let url = `https://source.unsplash.com/category/nature/${width}x${height}/daily`;
-    document.querySelector('#background').src = url;
-}
+	let base64Image = localStorage.backgroundImage;
+	if(base64Image === undefined || base64Image === null) {
+		setTimeout(setBackground, 100);
+	} else {
+		document.querySelector('#background').src = base64Image;
+	}
 
-//TODO handle window resizes
+}

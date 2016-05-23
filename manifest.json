@@ -3,7 +3,7 @@
 
 	"name": "Formosus",
   	"description": "Replaces the 'New Tab' tab, featuring beautiful backgrounds, current time and personalized greetings.",
-  	"version": "2.0.3",
+  	"version": "2.1.0",
 	"chrome_url_overrides" : {
     	"newtab": "index.html"
   	},
@@ -15,5 +15,9 @@
 	},
 	"permissions": [
     	"storage"
-    ]
+    ],
+	"background": {
+      "persistent": false,
+      "scripts": [ "js/background/tasks.js", "js/background/imageGetter.js" ]
+   }
 }
