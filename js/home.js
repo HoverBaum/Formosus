@@ -85,14 +85,14 @@ function initData(callback) {
 		console.debug(`Starting took ${startUpTime / 1000}s`);
 
 		//Check for name.
-		if(item.name) {
+		if(item.name && item.name !== null) {
 			name = item.name;
 			document.getElementById('name-input').value = name;
 			resizeName();
 		}
 
 		//Check for language.
-		if(item.lang) {
+		if(item.lang $$ item.lang !== null) {
 			lang = item.lang;
 		}
 
