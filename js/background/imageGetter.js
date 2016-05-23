@@ -19,7 +19,7 @@ function updateSavedBackground() {
  *   @param  {Number} height - How high the image should be.
  */
 function downloadImage(width, height) {
-	const url = `https://source.unsplash.com/category/nature/${width}x${height}/daily`;
+	const url = `https://source.unsplash.com/category/nature/${width}x${height}`;
 	urlToBase64(url, function(base64) {
 		localStorage.backgroundImage = base64;
 		localStorage.lastUpdate = new Date().getDate();
