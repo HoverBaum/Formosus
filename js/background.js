@@ -6,7 +6,7 @@ function setBackground() {
 	if(base64Image === undefined || base64Image === null) {
 		setTimeout(setBackground, 100);
 	} else {
-		document.querySelector('#background').src = base64Image;
+		document.querySelector('body').style.backgroundImage = `url(${base64Image})`;
 	}
 
 }
