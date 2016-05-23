@@ -5,8 +5,13 @@
  */
 function updateSavedBackground() {
 	const today = new Date().getDate();
-	const lastUpdate = localStorage.lastUpdate;
-	if(lastUpdate === null || lastUpdate === undefined || lastUpdate !== today) {
+	const lastUpdateString = localStorage.lastUpdate;
+	if(isNaN(lastUpdateString) || lastUpdateString === null) {
+		return;
+	}
+	const lastUpdate = parseInt(lastUpdateString);
+	console.debug(`Last image update ${lastUpdate}, today is ${today}. Will ${today === lastUpdate ? 'not update' : 'update'}`);
+	if(lastUpdate !== today) {
 		const width = screen.width;
 		const height = screen.height;
 		downloadImage(width, height);
