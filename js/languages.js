@@ -99,9 +99,30 @@ const french = [
 french.default = "Salut";
 french.close = 'Fermer';
 
+const chinesePinjin = [
+	{
+		greeting: "Zǎoshang hǎo",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "Xiàwǔ hǎo",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "Wǎnshàng hǎo",
+		start: 19,
+		end: 23
+	}
+];
+chinesePinjin.default = 'Nǐ hǎo';
+chinesePinjin.close = 'Guānbì';
+
 const languages = {
 	german: german,
 	english: english,
 	dutch: dutch,
-	french: french
+	french: french,
+	chinesePinjin: chinesePinjin
 }

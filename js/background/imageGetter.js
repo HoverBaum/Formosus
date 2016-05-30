@@ -6,9 +6,25 @@
 function updateSavedBackground() {
 	const today = new Date().getDate();
 	const lastUpdateString = localStorage.lastUpdate;
-	if(isNaN(lastUpdateString) || lastUpdateString === null) {
+	const base64Image = localStorage.backgroundImage;
+	if(base64Image === undefined || base64Image === null) {
+		console.debug(`No saved background, getting one now`)
+		getNewBackground(lastUpdateString, today);
+	} else if(isNaN(lastUpdateString) || lastUpdateString === null) {
+		console.debug(`No need to update background`)
 		return;
+	} else {
+		console.debug(`A new day, getting a new background`)
+		getNewBackground(lastUpdateString, today);
 	}
+}
+
+/**
+ *   Get a new background image fitting the users screen.
+ *   @param  {String} lastUpdateString - A string representing the date of the last update.
+ *   @param  {Number} today            - Todays day.
+ */
+function getNewBackground(lastUpdateString, today) {
 	const lastUpdate = parseInt(lastUpdateString);
 	console.debug(`Last image update ${lastUpdate}, today is ${today}. Will ${today === lastUpdate ? 'not update' : 'update'}`);
 	if(lastUpdate !== today) {
