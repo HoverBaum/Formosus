@@ -119,10 +119,31 @@ const chinesePinjin = [
 chinesePinjin.default = 'Nǐ hǎo';
 chinesePinjin.close = 'Guānbì';
 
+const chinese = [
+	{
+		greeting: "早上好",
+		start: 6,
+		end: 11
+	},
+	{
+		greeting: "下午好",
+		start: 14,
+		end: 18
+	},
+	{
+		greeting: "晚上好",
+		start: 19,
+		end: 23
+	}
+];
+chinese.default: '你好';
+chinese.close: '关闭';
+
 const languages = {
 	german: german,
 	english: english,
 	dutch: dutch,
 	french: french,
-	chinesePinjin: chinesePinjin
+	chinesePinjin: chinesePinjin,
+	chinese: chinese
 }
