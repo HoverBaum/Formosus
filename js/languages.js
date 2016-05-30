@@ -136,8 +136,8 @@ const chinese = [
 		end: 23
 	}
 ];
-chinese.default: '你好';
-chinese.close: '关闭';
+chinese.default = '你好';
+chinese.close = '关闭';
 
 const languages = {
 	german: german,
