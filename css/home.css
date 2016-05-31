@@ -59,15 +59,15 @@ body {
     color: #fff;
     font-weight: 400;
     font-size: 1em;
-    text-align: center;
     margin-bottom: 2%;
     text-align: left;
     min-width: 1em;
     cursor: pointer;
     box-sizing: border-box;
-    height: 1.1em;
+    height: 1.2em;
     transition: none;
     text-shadow: 0px 0px 2px #000;
+	border-bottom: 3px solid transparent;
 }
 
 #name-input:focus {
