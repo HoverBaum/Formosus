@@ -105,7 +105,7 @@ function loadName() {
     if (!chrome.storage) return;
     chrome.storage.sync.get(['name'], function(item) {
 
-        if (item.name) {
+        if (item.name && item.name !== null) {
             name = item.name;
             emit('name-changed', name);
         }
@@ -160,7 +160,7 @@ function loadConfig() {
     //Then check chrom storage.
     if (!chrome.storage) return;
     chrome.storage.sync.get(['config'], function(item) {
-        if (item.config) {
+        if (item.config && item.config !== null) {
             config = JSON.parse(item.config);
             emit('config-changed', config);
             emit('language-changed', config.language);
