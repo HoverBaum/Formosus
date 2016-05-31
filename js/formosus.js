@@ -133,8 +133,12 @@ function displayName(name) {
 	let inputWrapper = document.querySelector('#inputWrapper');
     nameSpan.innerHTML = name;
     let width = window.getComputedStyle(nameSpan).width;
-    nameInput.value = name;
     inputWrapper.style.width = width;
+
+	//Display in nameInput and keep cursor position
+	let position = nameInput.selectionStart;
+	nameInput.value = name;
+	nameInput.setSelectionRange(position, position);
 }
 
 /**
