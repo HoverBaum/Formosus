@@ -61,27 +61,37 @@ body {
     font-size: 1em;
     margin-bottom: 2%;
     text-align: left;
-    min-width: 1em;
+    width: 100%;
     cursor: pointer;
     box-sizing: border-box;
     height: 1.2em;
     transition: none;
     text-shadow: 0px 0px 2px #000;
-	border-bottom: 3px solid transparent;
 }
 
+/*
 #name-input:focus {
     border-bottom: 3px solid white;
 }
 
 #name-input::selection {
     background: #fff;
-    /* WebKit/Blink Browsers */
 }
 
 #name-input::-moz-selection {
     background: #fff;
-    /* Gecko Browsers */
+}
+*/
+
+#inputWrapper {
+	display: inline-block;
+	box-sizing: border-box;
+	min-width: 1em;
+	height: 1.02em;
+}
+
+#inputWrapper.focused {
+	border-bottom: 3px solid white;
 }
 
 #time-js {

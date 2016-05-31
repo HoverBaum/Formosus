@@ -43,6 +43,15 @@ function transformDOMEvents() {
         emit('name-changed', nameInput.value);
     });
 
+	//Input highlight
+	let inputWrapper = document.querySelector('#inputWrapper');
+	nameInput.addEventListener('focus', function() {
+		inputWrapper.className += 'focused';
+	});
+	nameInput.addEventListener('blur', function() {
+		inputWrapper.className = inputWrapper.className.replace(/focused/g, '');
+	});
+
     //Langauge changes.
     let langInput = document.querySelector('#lang-select');
     langInput.addEventListener('change', function() {
@@ -50,6 +59,7 @@ function transformDOMEvents() {
         emit('config-changed', config);
         emit('language-changed', config.language);
     });
+
 }
 
 /**
@@ -120,10 +130,11 @@ function loadName() {
 function displayName(name) {
     let nameInput = document.querySelector('#name-input');
     let nameSpan = document.querySelector('#name-js');
+	let inputWrapper = document.querySelector('#inputWrapper');
     nameSpan.innerHTML = name;
     let width = window.getComputedStyle(nameSpan).width;
     nameInput.value = name;
-    nameInput.style.width = width;
+    inputWrapper.style.width = width;
 }
 
 /**
