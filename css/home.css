@@ -69,20 +69,6 @@ body {
     text-shadow: 0px 0px 2px #000;
 }
 
-/*
-#name-input:focus {
-    border-bottom: 3px solid white;
-}
-
-#name-input::selection {
-    background: #fff;
-}
-
-#name-input::-moz-selection {
-    background: #fff;
-}
-*/
-
 #inputWrapper {
 	display: inline-block;
 	box-sizing: border-box;
@@ -97,7 +83,6 @@ body {
 #time-js {
     font-size: 3em;
 }
-
 
 /*
 	Stuff at the bottom left.
