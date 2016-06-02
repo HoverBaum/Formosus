@@ -21,13 +21,13 @@ const runSequence = require('run-sequence');
  *   Copy over files that need no handling.
  */
 gulp.task('assets', function() {
-	gulp.src(['fonts/**/*', 'img/**/*'],{base: './'})
+	gulp.src(['src/fonts/**/*', 'src/img/**/*'],{base: './src'})
 	.pipe(gulp.dest('dist/'));
 });
 
 //Handle the frontend
 gulp.task('html', function() {
-	gulp.src('index.html')
+	gulp.src('src/index.html', {base: 'src'})
         .pipe(useref())
 		.pipe(gulpif('*.css', minifyCss()))
 		.pipe(gulpif('*.js', strip()))
@@ -39,14 +39,14 @@ gulp.task('html', function() {
 gulp.task('manifest', function() {
 	var fs = require('fs');
 	var path = require('path');
-	var manifest = require('./manifest');
+	var manifest = require('./src/manifest');
 	manifest.background.scripts = ['backgroundScript.js'];
 	fs.writeFile(path.join('dist', 'manifest.json'), JSON.stringify(manifest));
 });
 
 //Handle the background scripts.
 gulp.task('background', function() {
-	gulp.src('js/background/*.js')
+	gulp.src('src/js/background/*.js', {base: 'src'})
 	.pipe(concat('backgroundScript.js'))
 	.pipe(strip())
 	.pipe(gulp.dest('dist'))
