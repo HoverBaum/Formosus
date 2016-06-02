@@ -2,7 +2,7 @@
 
 A plugin for Chrome that customizes the look of the "new Tab".
 
-![Screenshot of newTab](http://i.gyazo.com/bca0b5e01d9982df2d4c091d68d9592b.png "Example of how the new tab page will look")
+![Screenshot of newTab](store/english.jpg "Example of how the new tab page will look")
 
 ## Features
 
@@ -12,10 +12,12 @@ A plugin for Chrome that customizes the look of the "new Tab".
 
 ### Supported languages
 
-* English
-* German
+* Chinese (pinjin)
+* Chinese (simplified)
 * Dutch
+* English
 * French
+* German
 
 ## Contribute
 
