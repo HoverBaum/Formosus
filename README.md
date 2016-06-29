@@ -23,6 +23,6 @@ A plugin for Chrome that customizes the look of the "new Tab".
 
 If you speak a language not supported yet you can contribute by submitting greetings for your language.
 
-Found a bug? Open an issue.
+Found a bug? Open an issue :+1:
 
 Want to help? Make a fork or let me know.
