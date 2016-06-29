@@ -59,7 +59,6 @@ function downloadImage(width, height) {
  *   @param  {Function} callback - Function to be called with base64 encoded image.
  */
 urlToBase64 = function(url, callback) {
-	//TODO add a retry after a certain time.
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'blob';
@@ -74,5 +73,11 @@ urlToBase64 = function(url, callback) {
             }
         }
     };
+	xhr.timeout = 20000; // Set timeout to 20 seconds
+	xhr.ontimeout = function () {
+		xhr.abort();
+		cosnole.warn('Getting an image timed out, will try again...')
+		urlToBase64(url, callback);
+	}
     xhr.send();
 };
