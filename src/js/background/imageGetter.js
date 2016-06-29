@@ -25,6 +25,10 @@ function updateSavedBackground() {
  *   @param  {Number} today            - Todays day.
  */
 function getNewBackground(lastUpdateString, today) {
+	if(localStorage.fetching) {
+		console.debug('Already fetching an image');
+		return;
+	}
 	const lastUpdate = parseInt(lastUpdateString);
 	console.debug(`Last image update ${lastUpdate}, today is ${today}. Will ${today === lastUpdate ? 'not update' : 'update'}`);
 	if(lastUpdate !== today) {
@@ -40,8 +44,10 @@ function getNewBackground(lastUpdateString, today) {
  *   @param  {Number} height - How high the image should be.
  */
 function downloadImage(width, height) {
+	localStorage.fetching = true;
 	const url = `https://source.unsplash.com/category/nature/${width}x${height}/?landscape`;
 	urlToBase64(url, function(base64) {
+		localStorage.removeItem('fetching');
 		localStorage.backgroundImage = base64;
 		localStorage.lastUpdate = new Date().getDate();
 	});
@@ -53,6 +59,7 @@ function downloadImage(width, height) {
  *   @param  {Function} callback - Function to be called with base64 encoded image.
  */
 urlToBase64 = function(url, callback) {
+	//TODO add a retry after a certain time.
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'blob';
