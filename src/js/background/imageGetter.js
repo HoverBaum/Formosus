@@ -25,7 +25,7 @@ function updateSavedBackground() {
  *   @param  {Number} today            - Todays day.
  */
 function getNewBackground(lastUpdateString, today) {
-	if(localStorage.fetching) {
+	if(localStorage.fetching === true) {
 		console.debug('Already fetching an image');
 		return;
 	}
@@ -47,7 +47,7 @@ function downloadImage(width, height) {
 	localStorage.fetching = true;
 	const url = `https://source.unsplash.com/category/nature/${width}x${height}/?landscape`;
 	urlToBase64(url, function(base64) {
-		localStorage.removeItem('fetching');
+		localStorage.fetching = false;
 		localStorage.backgroundImage = base64;
 		localStorage.lastUpdate = new Date().getDate();
 	});
@@ -76,7 +76,7 @@ urlToBase64 = function(url, callback) {
 	xhr.timeout = 20000; // Set timeout to 20 seconds
 	xhr.ontimeout = function () {
 		xhr.abort();
-		cosnole.warn('Getting an image timed out, will try again...')
+		console.warn('Getting an image timed out, will try again...')
 		urlToBase64(url, callback);
 	}
     xhr.send();
