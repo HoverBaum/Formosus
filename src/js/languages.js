@@ -4,11 +4,11 @@
  */
 function updateLanguageStrings(language) {
 	IDsToUpdate.forEach(update => {
-		var elm = document.getElementById(update.id);
+		var elm = document.getElementById(update.id)
 		if(languages[language]) {
-			elm.innerHTML = languages[language][update.text];
+			elm.innerHTML = languages[language][update.text]
 		}
-	});
+	})
 }
 
 // Informationa bout which elements contain translatable strings.
@@ -17,7 +17,7 @@ const IDsToUpdate = [
 		id: 'close-options',
 		text: 'close'
 	}
-];
+]
 
 const german = [
 	{
@@ -35,9 +35,9 @@ const german = [
 		start: 19,
 		end: 23
 	}
-];
-german.default = "Hallo";
-german.close = 'Schließen';
+]
+german.default = "Hallo"
+german.close = 'Schließen'
 
 const english = [
 	{
@@ -55,9 +55,9 @@ const english = [
 		start: 19,
 		end: 23
 	}
-];
-english.default = "Hello";
-english.close = 'Close';
+]
+english.default = "Hello"
+english.close = 'Close'
 
 const dutch = [
 	{
@@ -75,9 +75,9 @@ const dutch = [
 		start: 19,
 		end: 23
 	}
-];
-dutch.default = "Hallo";
-dutch.close = 'Dichtbij';
+]
+dutch.default = "Hallo"
+dutch.close = 'Dichtbij'
 
 const french = [
 	{
@@ -95,9 +95,9 @@ const french = [
 		start: 19,
 		end: 23
 	}
-];
-french.default = "Salut";
-french.close = 'Fermer';
+]
+french.default = "Salut"
+french.close = 'Fermer'
 
 const chinesePinjin = [
 	{
@@ -115,9 +115,9 @@ const chinesePinjin = [
 		start: 19,
 		end: 23
 	}
-];
-chinesePinjin.default = 'Nǐ hǎo';
-chinesePinjin.close = 'Guānbì';
+]
+chinesePinjin.default = 'Nǐ hǎo'
+chinesePinjin.close = 'Guānbì'
 
 const chinese = [
 	{
@@ -135,9 +135,9 @@ const chinese = [
 		start: 19,
 		end: 23
 	}
-];
-chinese.default = '你好';
-chinese.close = '关闭';
+]
+chinese.default = '你好'
+chinese.close = '关闭'
 
 const languages = {
 	german: german,

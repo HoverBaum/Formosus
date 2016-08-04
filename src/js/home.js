@@ -1,8 +1,8 @@
-hourInterval = null;		//Intervall for hourly tasks.
-name = '';					//Name of the user.
-lang = 'english';			//Which language to use.
-var greetings = [];			//The different greetings.
-var startTime = Date.now();
+hourInterval = null		//Intervall for hourly tasks.
+name = ''					//Name of the user.
+lang = 'english'			//Which language to use.
+var greetings = []			//The different greetings.
+var startTime = Date.now()
 
 //-------------------------------------------------------------
 /*
@@ -11,23 +11,23 @@ var startTime = Date.now();
 //-------------------------------------------------------------
 
 $(document).ready(function() {
-	initData();
-	setup();
-    hourlyTasks();
-	minutlyTasks();
-    hourInterval = setInterval(hourlyTasks, 3600000);
-	minuteInterval = setInterval(minutlyTasks, 1000);
-});
+	initData()
+	setup()
+    hourlyTasks()
+	minutlyTasks()
+    hourInterval = setInterval(hourlyTasks, 3600000)
+	minuteInterval = setInterval(minutlyTasks, 1000)
+})
 
 function registerHooks() {
-	$('#name-input').keyup(resizeName);
-	$('#cog').click(showOptions);
+	$('#name-input').keyup(resizeName)
+	$('#cog').click(showOptions)
 	$('#overlay').click(function(e) {
 		if(e.target.id === "overlay") {
-			$(this).fadeOut(300);
+			$(this).fadeOut(300)
 		}
-	});
-	$('#save-options').click(saveOptions);
+	})
+	$('#save-options').click(saveOptions)
 }
 
 /*
@@ -37,11 +37,11 @@ function setup() {
 
 	//Display the users name.
 	if(name !== undefined && name !== null) {
-		document.getElementById('name-input').value = name;
-		resizeName();
+		document.getElementById('name-input').value = name
+		resizeName()
 	}
-	updateGreeting();
-	registerHooks();
+	updateGreeting()
+	registerHooks()
 }
 
 /*
@@ -52,25 +52,25 @@ function initGreetings() {
 	//Yes we use many ifs, because eval is to dangerous for Chrome extensions and to lazy for sandbox
 	//https://developer.chrome.com/extensions/sandboxingEval
 	if(lang === 'german'){
-		greetings = german;
+		greetings = german
 	} else if(lang === 'english') {
-		greetings = english;
+		greetings = english
 	} else if(lang === 'french') {
-		greetings = french;
+		greetings = french
 	} else if(lang === 'dutch') {
-		greetings = dutch;
+		greetings = dutch
 	}
-	updateGreeting();
-	localize();
+	updateGreeting()
+	localize()
 }
 
 /*
 	Replaces string according to language.
 */
 function localize() {
-	document.getElementById('saved-text').innerHTML = greetings.saved;
-	document.getElementById('save-options').innerHTML = greetings.save;
-	document.getElementById('lang-options').innerHTML = greetings.options;
+	document.getElementById('saved-text').innerHTML = greetings.saved
+	document.getElementById('save-options').innerHTML = greetings.save
+	document.getElementById('lang-options').innerHTML = greetings.options
 }
 
 /*
@@ -80,31 +80,31 @@ function localize() {
 */
 function initData(callback) {
 	chrome.storage.sync.get(['lang', 'name'], function(item) {
-		console.debug(item);
-		var startUpTime = Date.now() - startTime;
-		console.debug(`Starting took ${startUpTime / 1000}s`);
+		console.debug(item)
+		var startUpTime = Date.now() - startTime
+		console.debug(`Starting took ${startUpTime / 1000}s`)
 
 		//Check for name.
 		if(item.name && item.name !== null) {
-			name = item.name;
-			document.getElementById('name-input').value = name;
-			resizeName();
+			name = item.name
+			document.getElementById('name-input').value = name
+			resizeName()
 		}
 
 		//Check for language.
 		if(item.lang $$ item.lang !== null) {
-			lang = item.lang;
+			lang = item.lang
 		}
 
-	});
+	})
 }
 
 /*
 	Display the option to change languages.
 */
 function showOptions() {
-	$('#overlay').fadeIn(300);
-	$('#lang-select').val(lang);
+	$('#overlay').fadeIn(300)
+	$('#lang-select').val(lang)
 }
 
 /*
@@ -114,27 +114,27 @@ function saveOptions() {
 	console.debug("saving options")
 
 	//Save selected language
-	lang = $('#lang-select').val();
-	initGreetings();
+	lang = $('#lang-select').val()
+	initGreetings()
 	console.debug("new lang "+ lang)
 	chrome.storage.sync.set({'lang': lang}, function() {
 
 		//Let user know it worked.
-		settingsSaved();
-	});
+		settingsSaved()
+	})
 }
 
 /*
 	Gives the user feedback that settings are saved.
 */
 function settingsSaved() {
-	$('#overlay').fadeOut(300);
-	$('#save-overlay').fadeIn(300);
+	$('#overlay').fadeOut(300)
+	$('#save-overlay').fadeIn(300)
 
 	//Wait 1sec and fade out the feedback.
 	setTimeout(function() {
-		$('#save-overlay').fadeOut(300);
-	}, 1000);
+		$('#save-overlay').fadeOut(300)
+	}, 1000)
 }
 
 /*
@@ -147,11 +147,11 @@ function settingsSaved() {
 	Runs everything that need to run every hour.
 */
 function hourlyTasks() {
-	updateGreeting();
+	updateGreeting()
 }
 
 function minutlyTasks() {
-	updateTime();
+	updateTime()
 }
 
 /*
@@ -159,9 +159,9 @@ function minutlyTasks() {
 */
 
 function updateTime() {
-	var now = new Date();
-	var time = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
-	$('#time-js').html(time);
+	var now = new Date()
+	var time = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2)
+	$('#time-js').html(time)
 }
 
 //-----------------------------------------------------------
@@ -172,27 +172,27 @@ function updateTime() {
 //-----------------------------------------------------------
 
 function updateGreeting() {
-    var date = new Date;
-    var h = date.getHours();
-    var greet = generateGreeting(h);
-    $("#greeting-js").text(greet);
+    var date = new Date
+    var h = date.getHours()
+    var greet = generateGreeting(h)
+    $("#greeting-js").text(greet)
 }
 
 function generateGreeting(h) {
 	if(greetings.length === 0 && greetings.default === undefined) {
-		return 'Hello';	//Standard english greeting if none present.
+		return 'Hello'	//Standard english greeting if none present.
 	}
-	var greeting = '';
-	for(var i = 0; i < greetings.length; i++) {
-		var elm = greetings[i];
+	var greeting = ''
+	for(var i = 0 i < greetings.length i++) {
+		var elm = greetings[i]
 		if(elm.start <= h && elm.end > h) {
-			greeting = elm.greeting;
+			greeting = elm.greeting
 		}
 	}
 	if(greeting === '') {
-		greeting = greetings.default;
+		greeting = greetings.default
 	}
-	return greeting;
+	return greeting
 }
 
 //--------------------------------------------------------------
@@ -202,11 +202,11 @@ function generateGreeting(h) {
 //-----------------------------------------------------------------
 
 function resizeName() {
-	console.debug(`Resizing name`);
-	var $input = $('#name-input');
-	var $span = $('#name-js');
-	var val = $input.val();
-	$span.text(val);
-	$input.css('width', $span.css('width'));
-	chrome.storage.sync.set({'name': val});
+	console.debug(`Resizing name`)
+	var $input = $('#name-input')
+	var $span = $('#name-js')
+	var val = $input.val()
+	$span.text(val)
+	$input.css('width', $span.css('width'))
+	chrome.storage.sync.set({'name': val})
 }

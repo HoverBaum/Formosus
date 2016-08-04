@@ -5,11 +5,11 @@ chrome.tabs.onUpdated.addListener(function(tabid, changeinfo, tab) {
     // Without this, the retrievePhoto is called 3 times.
     if (changeinfo.status == "loading") {
 		console.debug(`Tab opened, checking background...`)
-		updateSavedBackground();
+		updateSavedBackground()
     }
 });
 
 //Tasks to run when installed.
 chrome.runtime.onInstalled.addListener(function() {
-    updateSavedBackground();
+    updateSavedBackground()
 });

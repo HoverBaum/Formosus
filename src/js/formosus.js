@@ -1,4 +1,4 @@
-const localStorage = window.localStorage;
+const localStorage = window.localStorage
 
 /**
  *   Configuration object, storring users preferences.
@@ -9,15 +9,15 @@ var config = {
 }
 
 function init() {
-    setBackground();
-    transformDOMEvents();
-    registerListeners();
+    setBackground()
+    transformDOMEvents()
+    registerListeners()
 
-    loadData();
-    enableOptions();
+    loadData()
+    enableOptions()
 
-    intervalTasks();
-    setInterval(intervalTasks, 2000);
+    intervalTasks()
+    setInterval(intervalTasks, 2000)
 }
 
 /**
@@ -26,10 +26,10 @@ function init() {
 function loadData() {
 
     //Users name.
-    loadName();
+    loadName()
 
     //Users config.
-    loadConfig();
+    loadConfig()
 }
 
 /**
@@ -38,27 +38,27 @@ function loadData() {
 function transformDOMEvents() {
 
     //Name changes.
-    let nameInput = document.querySelector('#name-input');
+    let nameInput = document.querySelector('#name-input')
     nameInput.addEventListener('keyup', function() {
-        emit('name-changed', nameInput.value);
-    });
+        emit('name-changed', nameInput.value)
+    })
 
 	//Input highlight
-	let inputWrapper = document.querySelector('#inputWrapper');
+	let inputWrapper = document.querySelector('#inputWrapper')
 	nameInput.addEventListener('focus', function() {
-		inputWrapper.className += 'focused';
-	});
+		inputWrapper.className += 'focused'
+	})
 	nameInput.addEventListener('blur', function() {
-		inputWrapper.className = inputWrapper.className.replace(/focused/g, '');
-	});
+		inputWrapper.className = inputWrapper.className.replace(/focused/g, '')
+	})
 
     //Langauge changes.
-    let langInput = document.querySelector('#lang-select');
+    let langInput = document.querySelector('#lang-select')
     langInput.addEventListener('change', function() {
-        config.language = langInput.value;
-        emit('config-changed', config);
-        emit('language-changed', config.language);
-    });
+        config.language = langInput.value
+        emit('config-changed', config)
+        emit('language-changed', config.language)
+    })
 
 }
 
@@ -66,30 +66,30 @@ function transformDOMEvents() {
  *   Register listeners for important events.
  */
 function registerListeners() {
-    subscribe('name-changed', saveName);
-    subscribe('name-changed', displayName);
+    subscribe('name-changed', saveName)
+    subscribe('name-changed', displayName)
 
-    subscribe('config-changed', saveConfig);
-    subscribe('config-changed', displayConfig);
+    subscribe('config-changed', saveConfig)
+    subscribe('config-changed', displayConfig)
 
-    subscribe('language-changed', updateLanguageStrings);
-    subscribe('language-changed', calculateGreeting);
+    subscribe('language-changed', updateLanguageStrings)
+    subscribe('language-changed', calculateGreeting)
 
-    subscribe('greeting-changed', displayGreeting);
+    subscribe('greeting-changed', displayGreeting)
 }
 
 /**
  *   Do some setup for config so it can be opened and closed.
  */
 function enableOptions() {
-    let config = document.querySelector('#options');
-    let wheel = document.querySelector('#cog');
+    let config = document.querySelector('#options')
+    let wheel = document.querySelector('#cog')
     wheel.addEventListener('click', function() {
-        config.style.display = 'block';
-    });
-    let close = document.querySelector('#close-options');
+        config.style.display = 'block'
+    })
+    let close = document.querySelector('#close-options')
     close.addEventListener('click', function() {
-        config.style.display = 'none';
+        config.style.display = 'none'
     })
 }
 
@@ -104,22 +104,22 @@ function enableOptions() {
 function loadName() {
 
     //First get local storage name to have it right now.
-    let name = 'Friend';
-    let localName = localStorage.getItem('name');
+    let name = 'Friend'
+    let localName = localStorage.getItem('name')
     if (localName) {
-        name = localName;
+        name = localName
     }
-    emit('name-changed', name);
+    emit('name-changed', name)
 
     //Then check chrom storage.
-    if (!chrome.storage) return;
+    if (!chrome.storage) return
     chrome.storage.sync.get(['name'], function(item) {
 
         if (item.name && item.name !== null) {
-            name = item.name;
-            emit('name-changed', name);
+            name = item.name
+            emit('name-changed', name)
         }
-    });
+    })
 
 }
 
@@ -128,17 +128,17 @@ function loadName() {
  *   @param  {string} name [description]
  */
 function displayName(name) {
-    let nameInput = document.querySelector('#name-input');
-    let nameSpan = document.querySelector('#name-js');
-	let inputWrapper = document.querySelector('#inputWrapper');
-    nameSpan.innerHTML = name;
-    let width = window.getComputedStyle(nameSpan).width;
-    inputWrapper.style.width = width;
+    let nameInput = document.querySelector('#name-input')
+    let nameSpan = document.querySelector('#name-js')
+	let inputWrapper = document.querySelector('#inputWrapper')
+    nameSpan.innerHTML = name
+    let width = window.getComputedStyle(nameSpan).width
+    inputWrapper.style.width = width
 
 	//Display in nameInput and keep cursor position
-	let position = nameInput.selectionStart;
-	nameInput.value = name;
-	nameInput.setSelectionRange(position, position);
+	let position = nameInput.selectionStart
+	nameInput.value = name
+	nameInput.setSelectionRange(position, position)
 }
 
 /**
@@ -146,13 +146,13 @@ function displayName(name) {
  *   @param  {string} name [description]
  */
 function saveName(name) {
-    localStorage.setItem('name', name);
-    if (!chrome.storage) return;
+    localStorage.setItem('name', name)
+    if (!chrome.storage) return
     chrome.storage.sync.set({
         'name': name
     }, function() {
 
-    });
+    })
 }
 
 /**********************
@@ -166,21 +166,21 @@ function saveName(name) {
 function loadConfig() {
 
     //First local.
-    let localConfig = JSON.parse(localStorage.getItem('config'));
+    let localConfig = JSON.parse(localStorage.getItem('config'))
     if (localConfig) {
-        config = localConfig;
+        config = localConfig
     }
-    emit('config-changed', config);
+    emit('config-changed', config)
 
     //Then check chrom storage.
-    if (!chrome.storage) return;
+    if (!chrome.storage) return
     chrome.storage.sync.get(['config'], function(item) {
         if (item.config && item.config !== null) {
-            config = JSON.parse(item.config);
-            emit('config-changed', config);
-            emit('language-changed', config.language);
+            config = JSON.parse(item.config)
+            emit('config-changed', config)
+            emit('language-changed', config.language)
         }
-    });
+    })
 
 }
 
@@ -189,8 +189,8 @@ function loadConfig() {
  *   @param  {object} config [description]
  */
 function displayConfig(config) {
-    var langInput = document.querySelector('#lang-select');
-    langInput.value = config.language || 'english';
+    var langInput = document.querySelector('#lang-select')
+    langInput.value = config.language || 'english'
 }
 
 /**
@@ -198,20 +198,20 @@ function displayConfig(config) {
  *   @param  {object} config [description]
  */
 function saveConfig(config) {
-    localStorage.setItem('config', JSON.stringify(config));
-    if (!chrome.storage) return;
-    var configString = JSON.stringify(config);
+    localStorage.setItem('config', JSON.stringify(config))
+    if (!chrome.storage) return
+    var configString = JSON.stringify(config)
     chrome.storage.sync.set({
         'config': configString
     }, function() {
 
-    });
+    })
 }
 
 /**
  *   Execute all tasks that should be regularly executed.
  */
 function intervalTasks() {
-    calculateGreeting();
-    displayTime();
+    calculateGreeting()
+    displayTime()
 }
