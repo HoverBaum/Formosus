@@ -11,5 +11,7 @@ chrome.tabs.onUpdated.addListener(function(tabid, changeinfo, tab) {
 
 //Tasks to run when installed.
 chrome.runtime.onInstalled.addListener(function() {
+	localStorage.fetching = 'false'
+	localStorage.fetchingStart = '0'
     updateSavedBackground()
 });

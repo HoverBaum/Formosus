@@ -25,11 +25,14 @@ function updateSavedBackground() {
  *   @param  {Number} today            - Todays day.
  */
 function getNewBackground(lastUpdateString, today) {
-	if(localStorage.fetching === 'true') {
+	const sinceStart = parseInt(localStorage.fetchingStart) - new Date().getDate()
+
+	//If we started a fetch less then five minutes ago.
+	if(localStorage.fetching === 'true' &&  sinceStart < 30000) {
 		console.debug('Already fetching an image')
 		return
 	}
-	const lastUpdate = parseInt(lastUpdateString);
+	const lastUpdate = parseInt(lastUpdateString)
 	console.debug(`Last image update ${today - lastUpdate} day${today-lastUpdate === 1 ? '' : 's'} ago. Will ${today === lastUpdate ? 'not update' : 'update'}`)
 	if(lastUpdate !== today) {
 		const width = screen.width
@@ -45,6 +48,7 @@ function getNewBackground(lastUpdateString, today) {
  */
 function downloadImage(width, height) {
 	localStorage.fetching = 'true'
+	localStorage.fetchingStart = new Date().getDate()
 	const url = `https://source.unsplash.com/category/nature/${width}x${height}/?landscape`
 	urlToBase64(url, function(base64) {
 		localStorage.fetching = 'false'
