@@ -1,6 +1,6 @@
 {
   "name": "formosus",
-  "version": "2.2.4",
+  "version": "2.2.6",
   "description": "A plugin for Chrome that customizes the look of the \"new Tab\".",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
