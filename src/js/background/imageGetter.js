@@ -25,7 +25,7 @@ function updateSavedBackground() {
  *   @param  {Number} today            - Todays day.
  */
 function getNewBackground(lastUpdateString, today) {
-	const sinceStart = parseInt(localStorage.fetchingStart) - new Date().getDate()
+	const sinceStart = new Date().getDate() - parseInt(localStorage.fetchingStart)
 
 	//If we started a fetch less then five minutes ago.
 	if(localStorage.fetching === 'true' &&  sinceStart < 30000) {
