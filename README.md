@@ -33,7 +33,9 @@ Want to help? Make a fork or let me know.
 
 A good way to develop goes like this:
 
-- run `npm run watch` to continously build the project into dist
+- run `npm run build` to build the project into dist
 - visit chrom://extensions in your Chrome browser
 - drag the `dist` folder into the browser
-- everytime you make an update click the refresh button for the plugin
+- everytime you make an update build again and click the refresh button for the plugin
+
+For some development it might be enough to simply serve the `src` folder as a website.
