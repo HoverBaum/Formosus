@@ -9,6 +9,7 @@ function setBackground() {
 	} else {
 		console.debug(`Image from localStorage loaded`)
 		document.querySelector('body').style.backgroundImage = `url(${base64Image})`
+		document.querySelector('#js-save-button').href = base64Image
 	}
 
 }

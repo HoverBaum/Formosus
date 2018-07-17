@@ -67,6 +67,7 @@ body {
     height: 1.2em;
     transition: none;
     text-shadow: 0px 0px 2px #000;
+    margin-left: 0.2em;
 }
 
 #inputWrapper {
@@ -157,4 +158,26 @@ body {
 
 .button:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+/*
+    Bottom right
+*/
+
+#bottom-right {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    color: white;
+    z-index: 50;
+}
+
+#bottom-right a {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease-out;
+}
+
+#bottom-right a:hover {
+    opacity: 1;
 }
