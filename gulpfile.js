@@ -41,6 +41,7 @@ gulp.task('manifest', function() {
 	var path = require('path')
 	var manifest = require('./src/manifest')
 	manifest.background.scripts = ['backgroundScript.js']
+	manifest.version = require('./package').version
 	fs.writeFile(path.join('dist', 'manifest.json'), JSON.stringify(manifest), () => {})
 })
 
