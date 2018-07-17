@@ -1,9 +1,12 @@
 {
   "name": "formosus",
-  "version": "2.2.8",
+  "version": "2.3.0",
   "description": "A plugin for Chrome that customizes the look of the \"new Tab\".",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp",
+    "watch": "gulp watch",
+    "zip": "gulp zip"
   },
   "bugs": {
     "url": "https://github.com/HoverBaum/Formosus/issues"
