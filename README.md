@@ -28,3 +28,12 @@ If you speak a language not supported yet you can contribute by submitting greet
 Found a bug? Open an issue :+1:
 
 Want to help? Make a fork or let me know.
+
+### Development
+
+A good way to develop goes like this:
+
+- run `npm run watch` to continously build the project into dist
+- visit chrom://extensions in your Chrome browser
+- drag the `dist` folder into the browser
+- everytime you make an update click the refresh button for the plugin
