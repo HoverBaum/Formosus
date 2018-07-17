@@ -92,7 +92,7 @@ function initData(callback) {
 		}
 
 		//Check for language.
-		if(item.lang $$ item.lang !== null) {
+		if(item.lang && item.lang !== null) {
 			lang = item.lang
 		}
 
@@ -183,7 +183,7 @@ function generateGreeting(h) {
 		return 'Hello'	//Standard english greeting if none present.
 	}
 	var greeting = ''
-	for(var i = 0 i < greetings.length i++) {
+	for(var i = 0; i < greetings.length; i++) {
 		var elm = greetings[i]
 		if(elm.start <= h && elm.end > h) {
 			greeting = elm.greeting
